@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Fiscal_Year__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Stage__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Requested_Total_Amount_5_Years__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <description>EBCs by Service or Staff Office</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Executive_Business_Case__c.Service_or_Staff_Office_SSO__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EBCs by Service or Staff Office (SSO)</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Executive_Business_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

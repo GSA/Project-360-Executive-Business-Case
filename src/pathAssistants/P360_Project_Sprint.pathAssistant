@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>GPM_Project__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>P360-Project-Sprint</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Actual_End_Date__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Ensure the Kanban board has been closed and is ready for a new Sprint&lt;/li&gt;&lt;li&gt;Ensure that any relevant documentation is complete&lt;/li&gt;&lt;li&gt;Ensure project Milestones are updated and closed out &lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Close-Out/Closed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>Initial Request has been received, vetted, and has been approved</info>
+        <picklistValueName>Concept Approval</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Deploy the code/configuration to Production&lt;/li&gt;&lt;li&gt;Notify security for review (if necessary)&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Deployment</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Finalize the Design for the Sprint including any Entity Relationship Diagrams, sketches, flow charts etc.&lt;/li&gt;&lt;li&gt;All User Stories must be complete and ready for development&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Design</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Actual_Start_Date__c</fieldNames>
+        <fieldNames>StatusUpdateOrComments__c</fieldNames>
+        <fieldNames>Accomplishments__c</fieldNames>
+        <fieldNames>Issues__c</fieldNames>
+        <fieldNames>Performance_Status__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Complete the development of the User Stories&lt;/li&gt;&lt;li&gt;Complete Testing of all User Story acceptance criteria&lt;/li&gt;&lt;li&gt;Solicit feedback from the business line via frequent Demo’s&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Development</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Project_Description__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Define the Objectives, Scope, and Deliverables, Purpose and a list of Deliverables to be produced&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Initiating</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Planned_Start_Date__c</fieldNames>
+        <fieldNames>Planned_End_Date__c</fieldNames>
+        <fieldNames>Project_Manager__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Define Project Timeline and Milestones&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Planning</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>StatusUpdateOrComments__c</fieldNames>
+        <fieldNames>Accomplishments__c</fieldNames>
+        <fieldNames>UpcomingActionItems__c</fieldNames>
+        <fieldNames>Issues__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Deploy the code/configuration to the Pre-Prod environment&lt;/li&gt;&lt;li&gt;Allow for User Acceptance testing as necessary&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Testing</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>P360_Sprint</recordTypeName>
+</PathAssistant>

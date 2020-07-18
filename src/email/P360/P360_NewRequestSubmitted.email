@@ -1,0 +1,7 @@
+Hello, 
+
+{!IF(CONTAINS(P360_Request__c.RequestType__c,'Enhancement'),'An application enhancement','A new application')} request titled "{!P360_Request__c.Name}" has been submitted. To view the request, you can access it via this link {!P360_Request__c.Link}. 
+
+Thank you, 
+Corporate IT Services Request Team
+Email: CorporateITServicesRequestSupport@gsa.gov

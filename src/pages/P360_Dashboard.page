@@ -1,0 +1,852 @@
+<!--Note: The CSS for this Dashboard has been modified for Lightning-->
+<!--Refer to https://github.com/GSA/sf-ProjectDashboard to use the dashboard in classic-->
+
+<apex:page controller="P360_Controller" showHeader="false" sidebar="false" standardStylesheets="false" title="Project Dashboard" id="dashboard" docType="HTML-5.0">
+    <head>
+        <meta charset="UTF-8" />
+        <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible" />
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+        <meta property="og:title" content="Project Dashboard" />
+        <meta name="description" content="Dashboard for Team"/>
+        <apex:stylesheet value="{!URLFOR($Resource.P360_Projectdashwds, '/uswds-0.9.0/css/uswds.min.css')}"/>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" />        
+        <apex:includeScript value="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js" />
+        <apex:includeScript value="{!URLFOR($Resource.P360_ProjectDashboardtablesortermod)}"/> 
+
+        <apex:variable var="uiTheme" value="classic2010Theme" 
+        rendered="{!$User.UIThemeDisplayed == 'Theme3'}">
+        <apex:stylesheet value="{!URLFOR($Resource.P360_ProjectDashboardClassicCSS)}" />
+        </apex:variable>
+    
+    
+        <apex:variable var="uiTheme" value="lightningDesktop" 
+        rendered="{!$User.UIThemeDisplayed == 'Theme4d'}">
+        <apex:stylesheet value="{!URLFOR($Resource.P360_ProjectDashboardLightningCSS)}" />
+        </apex:variable>   
+        
+        <style>
+            @media screen and (max-width: 1260px) {
+                .usa {
+                    width: 1470px;
+                }
+                            }
+
+            .Tracker-Phase-two{
+                font-size:12px !important;
+            }
+
+            .Tracker-Phase-two-bold{
+                margin-left:2px;
+            }
+
+            .Tracker-Phase-one {
+
+            font-size: 12px !important
+            }
+
+            .Tracker-Phase-two-notbold{
+            margin-left: 5px;
+            }
+            
+            html body.sfdcBody { overflow:visible}
+
+        </style>
+
+
+    </head> 
+    <body>
+        <div id="main" class="main-content" role="main">
+            <header role="banner">
+                <section class="usa">
+                    <div class="title"><span>{!$Label.P360_ProjDash_PageTitle}</span></div>
+                    <div class="keyProject-Title">
+                        <apex:outputText rendered="{!KeyProj.size!=0}">{!$Label.P360_ProjDash_KeyProjects_Title}</apex:outputText>
+                    </div>
+                    <div class="Wrapper-KeyProject">
+                        <apex:outputPanel rendered="{!KeyProj.size==0}" style="margin-top: 100px;">
+                            <div class="No-KeyProject">
+                                <span>
+                                    <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'pastdue.png')}"/>
+                                        {!$Label.P360_ProjDash_NokeyProjErrorMessage}
+                                </span>
+                            </div>
+                        </apex:outputPanel>
+                        <apex:repeat value="{!KeyProj}" var="proj">
+                            <div class="Content-KeyProject">
+                                 <div class="Project-ActionItems">
+                                      <apex:outputPanel rendered="{!proj.UpcomingActionItems__c!=null}">
+                                     <span class="Content-ActionItems">
+                                            ACTION ITEMS
+                                        </span> 
+                                    </apex:outputPanel>
+                                </div> 
+
+                                <div class="Project-Name {!proj.Project_Status__c}">
+                                    <div class="Project-Status">
+                                        <span class="Status-Icon">
+                                            <!--No status Available-->
+                                            <apex:outputText rendered="{!IF(proj.Project_Status__c=null,true,false)}">
+                                                <i class="fa fa-exclamation-triangle" style="font-size: 22px;"></i>
+                                                <span style="font-size: 15px">&nbsp;&nbsp;No Status Available</span>
+                                            </apex:outputText>
+
+                                            <!--on going projdash_status_one-->
+                                            <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'ontrack.png')}"
+                                            rendered="{!IF(proj.Project_Status__c=$Label.P360_ProjDash_Status_one,true,false)}"/>
+
+                                            <!--Delayed projdash_status_two-->
+                                            <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'atrisk.png')}"
+                                            rendered="{!IF(proj.Project_Status__c=$Label.P360_ProjDash_Status_two,true,false)}"/>
+
+                                            <!--completed projdash_status_three-->
+                                            <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'completed.png')}"
+                                            rendered="{!IF(proj.Project_Status__c=$Label.P360_ProjDash_Status_three,true,false)}"/>
+
+                                            <!--Cancelled projdash_status_four-->
+                                            <apex:outputText rendered="{!IF(proj.Project_Status__c=$Label.P360_ProjDash_Status_four,true,false)}">
+                                                <i class="fa fa-times-circle fa-lg" style="font-size:22px;"></i>
+                                            </apex:outputText>
+
+                                            <!--on hold projdash_status_five-->
+                                            <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'pastdue.png')}"
+                                            rendered="{!IF(proj.Project_Status__c=$Label.P360_ProjDash_Status_five,true,false)}"/>
+                                            
+                                            <!--
+                                            <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'ontrack.png')}"
+                                            rendered="{!IF(proj.Project_Status__c=$Label.ProjDash_Status_five,true,false)}"/>-->
+                                                                                        
+                                        </span>                                
+
+                                        <div  class="Status-Name">
+                                            {!proj.Project_Status__c}
+                                        </div>
+                                        <!--
+                                        <div  class="Status-Name" rendered="{!IF(proj.Project_Status__c=null,true,false)}">
+                                            No Status Available!
+                                        </div>-->
+
+
+                                        
+                                        <div class="KeyProject-Name">
+                                            {!proj.Name}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                               <div class="Project-Owner">
+                                    <span>
+                                        <div class="Owner-Bubble">OWNER</div>
+                                        <div class="Deadline-Bubble">DEADLINE</div>
+                                    </span>
+
+                                    <span>
+                                        <div class="Owner-Content"><a href="/{!proj.OwnerID}" target="_blank" style="color:black">{!proj.Owner.Name}</a></div>
+                                        <div class="Deadline-Content">
+                                            <apex:outputText value="{0,date,MM/dd/yy}">
+                                                 <apex:param value="{!proj.Actual_End_Date__c}" /> 
+                                            </apex:outputText> 
+                                        </div> 
+                                    </span>
+                                </div> 
+
+
+                                <!--Intiative Pizza tracker starts here-->
+                                <div class="Project-Tracker">
+
+                                <!--Concept Approval Phase-->
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase8, true,false)}">
+
+                                        <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4,true,false)}">
+                                            <div class="Concept-Approval"  style="  border:3px #4FA762 solid;
+                                                                                    background-color: #e6ffe6;">
+                                                <div class="tracker-Icon">
+                                                    <apex:image id="concept-green"
+                                                        url="{!URLFOR($Resource.P360_ProjectDashboard,'concept-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-one">
+                                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4,true,false)}">
+                                                        <b>{!$Label.P360_ProjDash_Tracker_CommonPhase}</b>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4,true,false)}">
+                                                        {!$Label.P360_ProjDash_Tracker_CommonPhase}
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+
+                                        <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4,true,false)}">
+                                            <div class="Concept-Approval"  style="  border-right:1px #4FA762 solid;
+                                                                                    border-top: 1px #4FA762 solid;
+                                                                                    border-bottom: 1px #4FA762 solid;
+                                                                                    background-color: #EEEEEE;
+                                                                                    ">
+                                                <div class="tracker-Icon">
+                                                    <apex:image id="concept-green2" url="{!URLFOR($Resource.P360_ProjectDashboard,'concept-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-one">
+                                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4,true,false)}">
+                                                        <b>{!$Label.P360_ProjDash_Tracker_CommonPhase}</b>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4,true,false)}">
+                                                         {!$Label.P360_ProjDash_Tracker_CommonPhase}
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase8,true,false)}">
+                                        <div class="Concept-Approval"  style="border:2px #EEEEEE solid;opacity: 0.4;">
+                                            <div class="tracker-Icon">
+                                               <apex:image id="concept-grey" url="{!URLFOR($Resource.P360_ProjectDashboard,'concept-grey.png')}"/>
+                                            </div>
+                                            <div class="Tracker-Phase-one">
+                                                {!$Label.P360_ProjDash_Tracker_CommonPhase}
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <!--Concept Approval Phase End-->
+                                    <!--Planning Phase Start -->
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase8,true,false)}">
+
+                                        <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5,true,false)}">
+                                            <div class="Planning" style="border:3px #4FA762 solid;
+                                                                         background-color: #e6ffe6;">
+                                                <div class="tracker-Icon">
+                                                    <apex:image id="planning-green" url="{!URLFOR($Resource.P360_ProjectDashboard,'planning-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-two">
+                                                  <div class="Tracker-Phase-two-bold">
+                                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5,true,false)}">
+                                                        <b>{!$Label.P360_ProjDash_Tracker_Phase5}</b>
+                                                    </apex:outputPanel>
+                                                    </div>
+                                                     <div class="Tracker-Phase-two-notbold">
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5,true,false)}">
+                                                        {!$Label.P360_ProjDash_Tracker_Phase5}
+                                                    </apex:outputPanel>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+
+                                        <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5,true,false)}">
+                                            <div class="Planning" style="border:1px #4FA762 solid;background-color: #EEEEEE;">
+                                                <div class="tracker-Icon">
+                                                    <apex:image id="planning-green1" url="{!URLFOR($Resource.P360_ProjectDashboard,'planning-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-two">
+                                                <div class="Tracker-Phase-two-bold">
+                                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5,true,false)}">
+                                                        <b>{!$Label.P360_ProjDash_Tracker_Phase5}</b>
+                                                    </apex:outputPanel>
+                                                    </div>
+                                                    <div class="Tracker-Phase-two-notbold">
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5,true,false)}">
+                                                        {!$Label.P360_ProjDash_Tracker_Phase5}
+                                                    </apex:outputPanel>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4
+                                                                    || proj.Status__c=null,true,false )}">
+                                        <div class="Planning" style="border:2px #EEEEEE solid;opacity: 0.4;">
+                                            <div class="tracker-Icon">
+                                                <apex:image id="planning-grey" url="{!URLFOR($Resource.P360_ProjectDashboard,'planning-grey.png')}"/>
+                                            </div>
+                                            <div class="Tracker-Phase-two">
+                                                {!$Label.P360_ProjDash_Tracker_Phase5}
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <!--Planning Phase End-->
+                                    <!--Initiating Phase Start-->
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase8,true,false)}">
+                                        <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6,true,false)}">
+                                            <div class="Initiating" style="border:3px #4FA762 solid;
+                                                                           background-color: #e6ffe6;">
+                                                <div class="tracker-Icon">
+                                                    <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'initiating-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-two">
+                                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6,true,false)}">
+                                                            <b>{!$Label.P360_ProjDash_Tracker_Phase6}</b>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6,true,false)}">
+                                                            {!$Label.P360_ProjDash_Tracker_Phase6}
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+
+                                        <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6,true,false)}">
+                                            <div class="Initiating" style="border:1px #4FA762 solid;
+                                                                           background-color: #EEEEEE">
+                                                <div class="tracker-Icon">
+                                                    <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'initiating-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-two">
+                                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6,true,false)}">
+                                                            <b>{!$Label.P360_ProjDash_Tracker_Phase6}</b>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6,true,false)}">
+                                                            {!$Label.P360_ProjDash_Tracker_Phase6}
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase5
+                                                                    ||proj.Status__c=null,true,false )}">
+                                        <div class="Initiating" style="border:2px #EEEEEE solid;opacity: 0.4">
+                                            <div class="tracker-Icon">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'initiating-grey.png')}"/>
+                                            </div>
+                                            <div class="Tracker-Phase-two">
+                                                {!$Label.P360_ProjDash_Tracker_Phase6}
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <!--Initiating Phase End-->
+                                    <!--Executing Phase Start-->
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase8,true,false)}">
+
+                                        <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7,true,false)}">
+                                            <div class="Executing" style="  border:3px #4FA762 solid;
+                                                                            background-color: #e6ffe6;">
+                                                <div class="tracker-Icon">
+                                                    <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'executing-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-two">
+                                                   <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7,true,false)}">
+                                                                <b>{!$Label.P360_ProjDash_Tracker_Phase7}</b>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7,true,false)}">
+                                                                {!$Label.P360_ProjDash_Tracker_Phase7}
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+
+                                        <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7,true,false)}">
+                                            <div class="Executing" style="  border-left:1px #4FA762 solid;
+                                                                            border-top: 1px #4FA762 solid;
+                                                                            border-bottom: 1px #4FA762 solid;
+                                                                            background-color: #EEEEEE;">
+                                                <div class="tracker-Icon">
+                                                    <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'executing-green.png')}"/>
+                                                </div>
+                                                <div class="Tracker-Phase-two">
+                                                   <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7,true,false)}">
+                                                                <b>{!$Label.P360_ProjDash_Tracker_Phase7}</b>
+                                                    </apex:outputPanel>
+                                                    <apex:outputPanel rendered="{!!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase7,true,false)}">
+                                                                {!$Label.P360_ProjDash_Tracker_Phase7}
+                                                    </apex:outputPanel>
+                                                </div>
+                                            </div>
+                                        </apex:outputPanel>
+                                    </apex:outputPanel>
+
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase1
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase2
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase3
+                                                                    || proj.Status__c=$Label.P360_ProjDash_Tracker_Phase4
+                                                                    || proj.Status__c   =$Label.P360_ProjDash_Tracker_Phase5 
+                                                                    ||proj.Status__c=$Label.P360_ProjDash_Tracker_Phase6
+                                                                    ||proj.Status__c=null,true,false )}">
+                                        <div class="Executing" style="border:2px #EEEEEE solid;opacity: 0.4;">
+                                            <div class="tracker-Icon">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'executing-grey.png')}"/>
+                                            </div>
+                                            <div class="Tracker-Phase-two">
+                                                {!$Label.P360_ProjDash_Tracker_Phase7}
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <apex:outputPanel rendered="{!IF(proj.Status__c=$Label.P360_ProjDash_Tracker_Phase8
+                                                                && proj.Project_Status__c=$Label.P360_ProjDash_Status_three,true,false)}">
+                                        <div  class="KeyProject-Complete-Bckgrnd">
+                                            <div>
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'checkmarkwhite.png')}"
+                                                style="margin-top:31px ;margin-left: 109px;"/>
+                                            </div>
+                                            <div class="KeyProject-Complete-Text">
+                                                 Complete
+                                            </div>
+                                        </div>
+                                    </apex:outputPanel>
+                                    <!--Executing Phase End-->
+                                </div>
+                            </div>
+                        </apex:repeat>
+                    </div>
+                </section>
+            </header>
+        </div>
+        <div class="All-Projects Request">
+            <div class="All-Projects-Title">
+                    Requests
+                    
+                    <apex:outputpanel id="minus" >
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'P360UpArrow.png')}"
+                                                   onclick="switchMenu('{!$Component.requestdropdown}',
+                                                                        '{!$Component.plus}',
+                                                                        '{!$Component.minus}')"
+                                                    title="Collapse" styleClass="clickable" style="padding-bottom: 0px;margin-left: 10px"/>
+                    </apex:outputpanel>
+                    <apex:outputpanel id="plus" style="display:none;">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'P360DownArrow.png')}"
+                                                    onclick="switchMenu('{!$Component.requestdropdown}',
+                                                                        '{!$Component.minus}',
+                                                                        '{!$Component.plus}')"
+                                                    title="Expand" styleClass="clickable" style="padding-bottom: 0px;margin-left: 10px"/>
+                    </apex:outputpanel>
+                    
+            </div>
+            
+            <apex:outputPanel id="requestdropdown" style="display:block;">
+            <div style="width:1004px;">
+                <table  id="accsTable" class="tablesorter" >
+                    <thead>
+                        <tr style="background-color:white" class="TableHeader">
+                            <th><span>Name</span></th>
+                            <th style="padding-left: 22px;"><span>Status</span></th>
+                            <th>Owner</th>
+                            <th style="padding-left: 1px;">Request Type</th>
+                            <!--<th style="padding-left: 15px;">Action Items</th> -->
+                            <th style="width:155px;" class="\{sorter: 'digit'}\">Action Items</th>
+                           <!-- <th style="padding-left: 15px">Costs</th> -->                      
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat id="ProjectRepeatIn" value="{!RqstLst}" var="r">
+                            <div>
+                                <tr style="background-color:F1F1F1;">
+                                    <td >
+                                        <span class="All-Projects-Name" id="All-Projects-Name">                                             
+                                             <a href="/{!r.Id}" target="_blank" >{!r.Name}</a>                                            
+                                        </span>
+                                    </td>
+
+                                    <td style="width: 204px;">
+                                     
+                                        <span class="All-Projects-Status" style="padding-bottom: 0.2em;padding-top: 0.2em">{!r.Status__c}</span>
+                                    </td>
+                                    <td>
+                                        <span class="All-Projects-Owner">{!r.Owner.Name}</span>
+                                    </td>
+                                    <td style="width:190px;">
+                                        
+                                        <span class="All-Projects-Owner">{!r.RequestType__c}</span> 
+                                    </td> 
+                                    
+                                    <td style="text-align:center">
+                                        <span class="All-Projects-ActionItems" id="{!r.id}ActionCount1"
+                                              title="Expand"  onclick="switchMenu('{!$Component.inlinetablesec}',
+                                                                                    '{!$Component.minusimage}',
+                                                                                    '{!$Component.plusimage}')">
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span style="color:#f1f1f1">h</span>
+                                            <apex:outputpanel id="plusimage">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'plus.png')}"
+                                                    onclick="switchMenu('{!$Component.inlinetablesec}',
+                                                                        '{!$Component.minusimage}',
+                                                                        '{!$Component.plusimage}')"
+                                                    title="Expand" styleClass="clickable"/>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel id="minusimage" style="display:none;">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'minus.png')}"
+                                                    onclick="switchMenu('{!$Component.inlinetablesec}',
+                                                                        '{!$Component.plusimage}',
+                                                                        '{!$Component.minusimage}')"
+                                                    title="Collapse" styleClass="clickable"/>
+                                            </apex:outputpanel>
+                                    </td>
+                                                            
+                                </tr>
+                                <tr class="expand-child tr1">
+                                    <td colspan="7">
+                                        <div>
+                                            <apex:outputPanel id="inlinetablesec" style="margin-top: 100px;display:none;">
+                                                <div class="All-Project-DetailView-Title">Status Update</div>
+
+                                                <!-- NEEDS ATTENTION START -->
+                                                <apex:outputPanel rendered="{!IF(ISBLANK(r.StatusUpdateOrComments__c),false,true)}">
+                                                <div class="All-Project-DetailView-container">
+                                                    <span Class="All-Project-DetailView-NeedAttention">
+                                                        <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'pastdue.png')}"/>
+                                                        Updates
+                                                    </span>
+
+                                                    <br></br>
+
+                                                    <div class="All-Project-DetailView-Escalations">
+                                                        <apex:outputText value="{!SUBSTITUTE(r.StatusUpdateOrComments__c,
+                                                                                '/&nbsp;','')}" escape="false"/>
+                                                        
+                                                    </div>
+                                                </div>
+                                                </apex:outputPanel>
+                                                <!-- NEEDS ATTENTION END -->
+
+                                                <div id="container">
+                                                    <div id="left">
+                                                        <span class="Accomplishments-DetailView-Title">
+                                                            Accomplishments
+                                                        </span>
+                                                        <br></br><br></br>
+                                                        <span id="Accomplishments-DetailView" class="Detail-Content"
+                                                        >
+                                                           <apex:outputText value="{!SUBSTITUTE(r.Accomplishments__c,
+                                                                                '<br>','<br><br>')}" escape="false"/>
+                                                        </span>
+                                                    </div>
+
+                                                    <div id="center">
+                                                        <span class="ActionItems-DetailView-Title">
+                                                            Action Items
+                                                        </span>
+                                                        <br></br><br></br>
+                                                        <span id="{!r.id}ActionItems-DetailView" class="Detail-Content" >
+                                                        <apex:outputText value="{!SUBSTITUTE(r.UpcomingActionItems__c,
+                                                                                '<br>','<br><br>')}" escape="false"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </div>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+            </apex:outputPanel>
+        </div>
+
+        <div class="All-Projects">
+            <div class="All-Projects-Title">
+                Open Projects
+                
+               
+
+
+                <apex:outputpanel id="openminus" >
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'P360UpArrow.png')}"
+                                                   onclick="switchMenu('{!$Component.open}',
+                                                                        '{!$Component.openplus}',
+                                                                        '{!$Component.openminus}')"
+                                                    title="Collapse" styleClass="clickable" style="padding-bottom: 0px;margin-left: 10px"/>
+                    </apex:outputpanel>
+                    <apex:outputpanel id="openplus" style="display:none;">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'P360DownArrow.png')}"
+                                                    onclick="switchMenu('{!$Component.open}',
+                                                                        '{!$Component.openminus}',
+                                                                        '{!$Component.openplus}')"
+                                                    title="Expand" styleClass="clickable" style="padding-bottom: 0px;margin-left: 10px"/>
+                    </apex:outputpanel>
+                                            
+            </div>
+
+            <apex:outputPanel id="open" style="display:block;">
+            <div style="width:1004px;">
+                <table  id="accsTable" class="tablesorter" >
+                    <thead>
+                        <tr style="background-color:white" class="TableHeader">
+                            <th><span>Name</span></th>
+                            <th style="padding-left: 17px;"><span>Status</span></th>
+                            <th>Owner</th>
+                            <th style="padding-left: 25px;">Deadline</th>
+                            <th style="padding-left: 15px;">Phase</th>
+                            <th style="width:155px;" class="\{sorter: 'digit'}\">Action Items</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat id="ProjectRepeat" value="{!ProjLst}" var="r">
+                            <div>
+                                <tr style="background-color:F1F1F1;">
+                                    <td >
+                                        <span class="All-Projects-Name" id="All-Projects-Name">
+                                             <a href="/{!r.Id}" target="_blank" >{!r.Name}</a> 
+                                        </span>
+                                    </td>
+
+                                    <td style="width: 111px">
+                                        <span class="All-Projects-Status {!r.Project_Status__c}" style="padding-bottom: 0.2em;padding-top: 0.2em">{!r.Project_Status__c}</span>
+                                    </td>
+                                    <td>
+                                        <span class="All-Projects-Owner">{!r.Owner.Name}</span>
+                                    </td>
+                                    <td>
+                                        <apex:outputText value="{0,date,MM/dd/yy}" styleClass="All-Projects-Deadline">
+                                            <apex:param value="{!r.Actual_End_Date__c}" />
+                                        </apex:outputText>
+                                    </td> 
+                                    <td>
+                                        <span class="All-Projects-Phase">{!r.Status__c}</span>
+                                    </td>
+                                    <td style="text-align:center">
+                                        <span class="All-Projects-ActionItems" id="{!r.id}ActionCount"
+                                              title="Expand"  onclick="switchMenu('{!$Component.inlinetablesec}',
+                                                                                    '{!$Component.minusimage}',
+                                                                                    '{!$Component.plusimage}')">
+                                        </span>
+                                    </td>
+
+                                    <td>
+                                        <span style="color:#f1f1f1">h</span>
+                                            <apex:outputpanel id="plusimage">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'plus.png')}"
+                                                    onclick="switchMenu('{!$Component.inlinetablesec}',
+                                                                        '{!$Component.minusimage}',
+                                                                        '{!$Component.plusimage}')"
+                                                    title="Expand" styleClass="clickable"/>
+                                            </apex:outputpanel>
+                                            <apex:outputpanel id="minusimage" style="display:none;">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'minus.png')}"
+                                                    onclick="switchMenu('{!$Component.inlinetablesec}',
+                                                                        '{!$Component.plusimage}',
+                                                                        '{!$Component.minusimage}')"
+                                                    title="Collapse" styleClass="clickable"/>
+                                            </apex:outputpanel>
+                                    </td>
+                                </tr>
+                                <tr class="expand-child tr1">
+                                    <td colspan="7">
+                                        <div>
+                                            <apex:outputPanel id="inlinetablesec" style="margin-top: 100px;display:none;">
+                                                <div class="All-Project-DetailView-Title">Status Update</div>
+
+                                                <!-- NEEDS ATTENTION START -->
+                                                <apex:outputPanel rendered="{!IF(ISBLANK(r.StatusUpdateOrComments__c),false,true)}">
+                                                <div class="All-Project-DetailView-container">
+                                                    <span Class="All-Project-DetailView-NeedAttention">
+                                                        <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'pastdue.png')}"/>
+                                                        Updates
+                                                    </span>
+
+                                                    <br></br>
+
+                                                    <div class="All-Project-DetailView-Escalations">
+                                                        <apex:outputText value="{!SUBSTITUTE(r.StatusUpdateOrComments__c,
+                                                                                '/&nbsp;','')}" escape="false"/>
+                                                        
+                                                    </div>
+                                                </div>
+                                                </apex:outputPanel>
+                                                <!-- NEEDS ATTENTION END -->
+
+                                                <div id="container">
+                                                    <div id="left">
+                                                        <span class="Accomplishments-DetailView-Title">
+                                                            Accomplishments
+                                                        </span>
+                                                        <br></br><br></br>
+                                                        <span id="Accomplishments-DetailView" class="Detail-Content">
+                                                           <apex:outputText value="{!SUBSTITUTE(r.Accomplishments__c,
+                                                                                '<br>','<br><br>')}" escape="false"/>
+                                                        </span>
+                                                    </div>
+
+                                                    <div id="center">
+                                                        <span class="ActionItems-DetailView-Title">
+                                                            Action Items
+                                                        </span>
+                                                        <br></br><br></br>
+                                                        <span id="{!r.id}ActionItems-DetailView" class="Detail-Content" >
+                                                        <apex:outputText value="{!SUBSTITUTE(r.UpcomingActionItems__c,
+                                                                                '<br>','<br><br>')}" escape="false"/>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </apex:outputPanel>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </div>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+            </apex:outputpanel>
+        </div>
+        <div class="Completed-Projects">
+            <div class="Completed-Projects-Title">Completed Projects
+              <apex:outputpanel id="completedminus" >
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'P360UpArrow.png')}"
+                                                   onclick="switchMenu('{!$Component.accsTable}',
+                                                                        '{!$Component.completedplus}',
+                                                                        '{!$Component.completedminus}')"
+                                                    title="Collapse" styleClass="clickable" style="padding-bottom: 0px;margin-left: 10px"/>
+                    </apex:outputpanel>
+                    <apex:outputpanel id="completedplus" style="display:none;">
+                                                <apex:image url="{!URLFOR($Resource.P360_ProjectDashboard,'P360DownArrow.png')}"
+                                                    onclick="switchMenu('{!$Component.accsTable}',
+                                                                        '{!$Component.completedminus}',
+                                                                        '{!$Component.completedplus}')"
+                                                    title="Expand" styleClass="clickable" style="padding-bottom: 0px;margin-left: 10px"/>
+                    </apex:outputpanel>   
+            </div>
+            <apex:outputPanel id="accsTable" style="display:block;">
+
+                <div style="width:1004px;">
+                    <table  id="accsTable" class="tablesorter" >
+                    <thead>
+                        <tr style="background-color:white">
+                            <th>Name</th>
+                            <th style="padding-left: 17px;">Status</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <apex:repeat value="{!compltdProj}" var="lst">
+                            <div>
+                                <tr style="background-color:F1F1F1;height: 60px;border-bottom: 12px solid white;">
+                                    <td style="width: 305px;">
+                                        <span class="All-Projects-Name" id="All-Projects-Name" >
+                                        <a href="/{!lst.Id}" target="_blank" >{!lst.Name}</a> 
+                                        </span>
+                                    </td>
+                                    <td style="width: 111px;">
+                                        <span class="All-Projects-Status {!lst.Project_Status__c}" style="padding-bottom: 0.2em;padding-top: 0.2em">{!lst.Project_Status__c}</span>
+                                    </td>
+                                    <td style="">
+                                        <span class="All-Projects-Owner">{!lst.Owner.Name}</span>
+                                    </td>
+                                </tr>
+                            </div>
+                        </apex:repeat>
+                    </tbody>
+                </table>
+            </div>
+             </apex:outputpanel>                
+        </div>
+         
+    </body>  
+
+    <!--Toggle between Detail and List view under open projects-->
+    <script>
+        function switchMenu(obj,obj1,obj2)
+        {
+            var el = document.getElementById(obj);
+            console.log(el);
+            if ( el.style.display != 'none' ) {
+            el.style.display = 'none';
+            }
+            else {
+            el.style.display = '';
+            }
+            var e2 = document.getElementById(obj1);
+            console.log(e2);
+            if ( e2.style.display != 'none' ) {
+            e2.style.display = 'none';
+            }
+            else {
+            e2.style.display = '';
+            }
+             var e3 = document.getElementById(obj2);
+             console.log(e3);
+            if ( e2.style.display != 'none' ) {
+            e3.style.display = 'none';
+            }
+            else {
+            e3.style.display = '';
+            }
+
+        }
+    </script>
+
+    <!--Counting # of Action Items-->
+    <script>
+
+        $(window).load(function()
+        {
+            var $actionMap = jQuery.parseJSON('{!JSENCODE(actionMapJSON)}');
+            var $idList = jQuery.parseJSON('{!JSENCODE(ProjIDListJSON)}');
+
+             var $InactionMap = jQuery.parseJSON('{!JSENCODE(RequestactionMapJSON)}');
+            var $InidList = jQuery.parseJSON('{!JSENCODE(RequestIDListJSON)}');
+
+            for (let id of $idList) {
+                document.getElementById(id+'ActionCount').innerHTML=$actionMap[id];}
+
+
+
+             for (let id of $InidList) {           
+
+                document.getElementById(id+'ActionCount1').innerHTML=$InactionMap[id];
+
+            }   
+ 
+        }
+
+        );
+
+    </script>
+
+    <!--Table Sorter-->
+    <script>
+          $(window).load(function()
+          {
+            $("[id$='accsTable']").tablesorter({dateFormat : "dd/mm/yyyy"});
+
+          });
+    </script>
+    <apex:includeScript value="{!URLFOR($Resource.P360_Projectdashwds, '/uswds-0.9.0/js/uswds.min.js')}"/>
+    
+  <!--  <p>
+        Value of $User.UIThemeDisplayed: {! $User.UIThemeDisplayed }
+    </p> -->
+</apex:page>

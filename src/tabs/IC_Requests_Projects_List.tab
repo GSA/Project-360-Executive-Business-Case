@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>P360 - Visualforce page to show &apos;Corporate IT Services&apos; projects (open and closed) and requests</description>
+    <label>IC Requests/Projects List</label>
+    <motif>Custom73: Highway Sign</motif>
+    <page>P360_Dashboard</page>
+</CustomTab>

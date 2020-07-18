@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>P360 - Manual Sharing is not available in Lightning Experience. This button will open the manual sharing page where the users can share the projects manually.</description>
+    <height>250</height>
+    <label>Share This Project</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <page>P360_Manual_Sharing</page>
+    <type>VisualforcePage</type>
+    <width>-100</width>
+</QuickAction>

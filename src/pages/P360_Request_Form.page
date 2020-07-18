@@ -1,0 +1,1027 @@
+<apex:page controller="P360_RequestForm_Controller" showHeader="False" sidebar="False" standardStylesheets="False" id="RequestForm" doctype="html-5.0">
+    
+    <head>
+        <apex:stylesheet value="{!URLFOR($Resource.wds, '/uswds-0.9.0/css/uswds.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.P360_IntakeForm_CSS)}"/>
+        <script src="https://code.jquery.com/jquery-3.1.0.min.js" 
+        integrity="sha256-cCueBR6CsyA4/9szpPfrX3s49M9vUU5BgtiJj06wt/s=" crossorigin="anonymous">
+        </script>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+         <!-- Mobile Specific Metas -->
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="MobileOptimized" content="320"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Title and meta description-->
+
+        <title>CXO Request Form</title>
+        <meta property="og:title" content="CXO Request Form" />
+        <meta name="description" content=""/>
+        <meta property="og:description" content="" />
+        
+        <script type="text/javascript">
+            function textCounter( field, countfield, maxlimit) {
+                if ( field.value.length > maxlimit ) {
+                    field.value = field.value.substring( 0, maxlimit );
+                    field.blur();
+                    field.focus();
+                    document.getElementById(countfield).innerHTML = ' '+maxlimit;
+                    alert('You have reached the maximum limit of 5000 character. Please revise your input.');
+                    return false;
+                } else {
+                    countfield.value = maxlimit - field.value.length;
+                    document.getElementById(countfield).innerHTML = ' '+(maxlimit - field.value.length);
+                }
+            }
+        </script>
+    </head>
+    <body>
+        
+        <header class="header cf" role="banner">
+            <div class="wrap">
+                <a href="http://open.gsa.gov" target="_blank">
+                    <apex:image url="{!URLFOR($Resource.GSAITHire_Starlogo)}" styleclass="logo" 
+                    alt="GSA IT Logo" id="gsaheaderlogo" style="width: 272px; height: 84px;margin-top: 18px;"/> 
+                </a>
+                <h1>IT PROJECT REQUEST FORM</h1>
+            </div>
+        </header>
+
+        <div class="site-content">
+            <section class="slab-intro usa-grid" style="padding-top: 10px;text-align: justify;font-size:20px;">
+                
+                <div style="line-height: 1.5em;">
+                Welcome to the IT Project Request form for GSA Staff Offices.  Please complete the form on this page to request a change or enhancement related to an existing Staff Office application or to initiate a request for an entirely new application.  Below are links to information and support that might be helpful to you in submitting your request.  You will receive an email confirmation following your submission, and once your project is approved for implementation you will be able to track its progress using Project 360.
+                </div>
+                <br></br>
+                <div>
+                    <div class="button_wrapper usa-width-one-fourth" >
+                        <a href="{!$Label.P360_Who_should_use_this_form_href}" target="_blank">
+                            <button class="usa-button-big" type="button" style="height: 87px;border-radius: 25px">
+                                Who should use this form?
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button_wrapper usa-width-one-fourth" >
+                        <a href="{!$Label.P360_What_is_the_process_href}" target="_blank" 
+                        style="color: #ffffff">
+                            <button class="usa-button-big" type="button" style="height: 87px;border-radius: 25px" >
+                                What is the process?
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button_wrapper usa-width-one-fourth" >
+                        <a href="{!$Label.P360_Staff_Office_applications_href}" target="_blank" style="color:#ffffff">
+                            <button class="usa-button-big" type="button" style="height: 87px;border-radius: 25px">
+                                Staff Office applications at a glance
+                            </button>
+                        </a>
+                    </div>
+                    <div class="button_wrapper usa-width-one-fourth" >
+                        <a href="mailto:corporateITservicesrequestsupport@gsa.gov" 
+                        style="color: #ffffff" target="_blank">
+                            <button class="usa-button-big" type="button" style="height: 87px;margin-bottom: 60px;border-radius: 25px">
+                                Need help? &nbsp;Contact us.
+                            </button>
+                        </a>
+                    </div>
+                </div>
+                
+                
+                <!--<span style="font-style: italic;color:#C71231;font-weight: 600;margin-top: 15px;">Thank you for your request!</span>-->
+                <br></br><br></br>
+                
+               
+
+                <apex:form styleClass="usa-form"  style="max-width: 66rem;">
+                    <label for="{!$Label.P360_508}Requestorname" class="usa-input-required">Requestor Name</label>
+                    <apex:inputField id="Requestorname"  type="text" 
+                    value="{!request.RequestorName__c}" html-placeholder="e.g. John Smith"/>
+                     <div class="usa-input-error" id="RequestornameError" style="display: none;">
+                        <span class="usa-input-error-message" id="input-error-message-name" role="alert">
+                            Please enter a valid Requestor Name.
+                        </span>
+                    </div>
+                    
+
+                    <label for="{!$Label.P360_508}phone" class="usa-input-required">Requestor Phone Number</label>
+                    <apex:inputField id="phone" type="tel"  
+                    value="{!request.RequestorPhone__c}" html-placeholder="e.g. 123-456-7890"/>
+                    <div class="usa-input-error" id="phoneError" style="display: none;">
+                        <span class="usa-input-error-message" id="input-error-message-phone" role="alert">
+                            Please enter a valid phone number.
+                        </span>
+                    </div>
+    
+                    <label for="{!$Label.P360_508}email" class="usa-input-required">Requestor Email Address</label>
+                    <apex:inputField id="email"  type="email"  
+                    value="{!request.RequestorEmail__c}" html-placeholder="e.g. John.Smith@gsa.gov"/>
+                    <span style="font-style: italic;font-size: medium;color: blue;">Note : Please use a government specific email address ending with domain *.gov or *.us or *.mil</span>
+                    
+                    <div class="usa-input-error" id="emailError" style="display: none;">
+                        <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                            Please enter a valid email address.
+                        </span>
+                        <!--<span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                            Only government contact information should be used when completing this form.
+                        </span>-->
+                    </div>
+                         
+                    <label for="{!$Label.P360_508}SSO" class="usa-input-required">Requestor Service or Staff Office</label>
+                    <apex:inputField id="SSO"  value="{!request.RequestorSSO__c}" />
+                    <div class="usa-input-error" id="SSOError" style="display: none;">
+                        <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                            Please select a Requestor Service or Staff Office.
+                        </span>
+                    </div> 
+                    
+               <!-- Beginning of Adding 3 new fields; Office / Portfolio, Division, and Region -->
+                    
+                    <label for="{!$Label.P360_508}Portfolio" >Office / Portfolio</label>
+                    <apex:inputField id="Portfolio"  value="{!request.Office_Portfolio__c}" /> 
+                    
+                    <label for="{!$Label.P360_508}Division" >Division</label>
+                    <apex:inputField id="Division"  value="{!request.Division__c}" />
+                    
+                    <label for="{!$Label.P360_508}Region" class="usa-input-required">Region</label>
+                    <apex:inputField id="Region"  value="{!request.Region__c}" />
+                    <div class="usa-input-error" id="RegionError" style="display: none;">
+                        <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                            Please select a Region. 
+                        </span>
+                    </div> 
+                    
+               <!-- End of Adding 3 new fields; Office / Portfolio, Division, and Region -->
+                    
+                    <label for="{!$Label.P360_508}type" class="usa-input-required">What type of Request is this?</label>
+                    <apex:actionRegion >
+                        <apex:inputField id="type" value="{!request.Type__c}">
+                                <apex:actionSupport event="onchange" rerender="New,Enhancement" />
+                        </apex:inputField>
+                    </apex:actionRegion>
+                    <div class="usa-input-error" id="typeError" style="display: none;">
+                        <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                            Please select a request type.
+                        </span>
+                    </div>
+
+                    
+                    <!--section Start for New new-Request-->
+                    <apex:outputPanel id="New" >
+                        <apex:outputPanel id="Request-Form2-New" rendered="{!request.Type__c=='New'}">
+                            <label for="{!$Label.P360_508}newRequestname" class="usa-input-required">
+                            Please provide a title for this request.
+                            </label>
+                            <apex:inputField id="newRequestname" type="text" value="{!request.Name}" html-placeholder=""/>
+
+                            <div class="usa-input-error" id="newRequestnameError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please enter a valid title for this request.
+                                </span>
+                            </div>
+
+                            <label for="{!$Label.P360_508}newRequestDescription" class="usa-input-required">
+                            Please provide a short description of this request.
+                            </label>
+                            <apex:inputField id="newRequestDescription" type="text" 
+                            value="{!request.Description__c}" onblur="textCounter(this,'Size',5000);" 
+                            onkeyup="textCounter(this,'Size',5000);"/>
+                            <div class="usa-input-error" id="newRequestDescriptionError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please enter a valid short description for this request.
+                                </span>
+                            </div>
+                            
+                            <p style="margin-top: 0.1em;"> 
+                                Remaining Characters : 
+                                <span id="Size" style="font-family:courier new; color:red" >5000</span> 
+                            </p>
+
+
+                            <label for="{!$Label.P360_508}newRequestFederalMandateResult" class="usa-input-required">
+                                Is this request the result of a Federal Mandate?
+                            </label>
+                            <apex:actionRegion >
+                                <apex:inputField id="newRequestFederalMandateResult"  type="text" value="{!request.ResultOfFederalMandate__c}">
+                                <apex:actionSupport event="onchange" reRender="NewFederalMandateDesc"/>
+                                </apex:inputField>
+                            </apex:actionRegion>
+                             <div class="usa-input-error" id="newRequestFederalMandateResultError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select Yes or No.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="NewFederalMandateDesc">
+                                <apex:outputPanel id="Mandate-Desc" rendered="{!request.ResultOfFederalMandate__c=='Yes'}">
+                                    <label for="{!$Label.P360_508}newRequestFederalMandateDescription" class="usa-input-required">
+                                        Provide a description of the mandate.
+                                    </label>
+                                    <apex:inputField id="newRequestFederalMandateDescription" 
+                                    type="text" value="{!request.DescriptionOfMandate__c}"  
+                                    onblur="textCounter(this, 'Size2',5000);" 
+                                    onkeyup="textCounter(this,'Size2',5000);"
+                                    StyleClass="usa-input-required"/>
+                                    
+                                    <p style="margin-top: 0.1em;"> 
+                                        Remaining Characters : 
+                                        <span id="Size2" style="font-family:courier new; color:red" >5000</span> 
+                                    </p>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                             <div class="usa-input-error" id="newRequestFederalMandateDescriptionError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please enter valid description of the mandate.
+                                </span>
+                            </div>
+
+                            <label for="{!$Label.P360_508}new-Request-Task-Today">
+                            Please describe how you accomplish this task today (if applicable).
+                            </label>
+                            <apex:inputField id="new-Request-Task-Today" type="text" 
+                            value="{!request.HowDoYouAccomplishThisTaskToday__c}"
+                            onblur="textCounter(this, 'Size3',5000);" 
+                            onkeyup="textCounter(this,'Size3',5000);"/>
+
+                            <p style="margin-top: 0.1em;"> 
+                                Remaining Characters : 
+                                <span id="Size3" style="font-family:courier new; color:red" >5000</span> 
+                            </p>
+
+                            
+                            <label for="{!$Label.P360_508}newRequestBudget" class="usa-input-required">
+                             Does your management support this request?
+                            </label>
+                            <apex:actionRegion >
+                                <apex:inputField id="newRequestBudget" type="text" value="{!request.DeptLeadershipSupportBudget__c}" >
+                                    <apex:actionSupport event="onchange" reRender="NewManagementContactdiv"/>
+                                </apex:inputField>
+                            </apex:actionRegion>
+                            <div class="usa-input-error" id="newRequestBudgetError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="NewManagementContactdiv">
+                                <apex:outputPanel rendered="{!request.DeptLeadershipSupportBudget__c=='Yes'}">
+                                    <label for="{!$Label.P360_508}NewManagementContact" class="usa-input-required">
+                                     Please provide contact name.
+                                    </label>
+                                    <apex:inputField id="NewManagementContact" type="text" value="{!request.ManagementContactInfo__c}" />
+                                    <div class="usa-input-error" id="NewManagementContactError" style="display: none;">
+                                        <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                            Please enter valid Contact Name.
+                                        </span>
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                            
+
+                            <label for="{!$Label.P360_508}newRequestCostInfo" class="usa-input-required">
+                            Do you have any cost information at this time?
+                            </label>
+                            <apex:actionRegion >
+                                <apex:inputField id="newRequestCostInfo" type="text" value="{!request.CurrentCostInformation__c}"  
+                                >
+                                    <apex:actionSupport event="onchange" reRender="newCostEstimateDetails"/>
+                                </apex:inputField>
+                            </apex:actionRegion> 
+                            <div class="usa-input-error" id="newRequestCostInfoError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="newCostEstimateDetails">
+                                <apex:outputPanel id="new-CostEstimate-Details" rendered="{!request.CurrentCostInformation__c=='Yes'}">
+                                    <label for="{!$Label.P360_508}newRequestCostEstimate" class="usa-input-required">
+                                     Provide the estimated costs.
+                                    </label>
+                                    <apex:inputField id="newRequestCostEstimate" value="{!request.EstimatedCosts__c}" 
+                                    html-placeholder="e.g. $100,000.00" />
+
+                                    <div class="usa-input-error" id="newRequestCostEstimateError" style="display: none;">
+                                            <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                                Please enter a valid cost.
+                                            </span>
+                                    </div>
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+                             
+                             
+                            
+                            <label for="{!$Label.P360_508}newRequestusersImpacted" class="usa-input-required">
+                             How many users are impacted by the implementation of this request?
+                            </label>
+                            <apex:inputField id="newRequestusersImpacted" type="text" value="{!request.NumberOfUsersImpacted__c}" />
+                            <div class="usa-input-error" id="newRequestusersImpactedError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div>
+                          
+                            <label for="{!$Label.P360_508}new-Request-usersImpacted-type" class="usa-input-required">
+                                 What type of users are impacted by the implementation of this request?
+                            </label>
+
+                            <div class="Multiselect">
+                            
+                                <apex:selectCheckboxes id="NewUserImpact" 
+                                value="{!TypeOfUserSelected}" layout="pageDirection" 
+                                 styleClass="makeRows" >
+                                    <apex:selectOptions value="{!TypeofUserOptions}"/>
+                                </apex:selectCheckboxes>
+                            </div> 
+                            <div class="usa-input-error" id="NewUserImpactError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="new-request-impact-other">
+                                <label for="{!$Label.P360_508}otherimpactedUser">
+                                 If Other is selected, please provide additional information.
+                                </label>
+                                <apex:inputField id="otherimpactedUser" type="text" value="{!request.TypeOfUsersImpactedOther__c}"/>
+                            </apex:outputPanel>
+                            <div class="usa-input-error" id="otherimpactedUserError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please provide information for other impacted users.
+                                </span>
+                            </div>
+
+                             <label for="{!$Label.P360_508}New-Request-benefit" class="usa-input-required">
+                             What are the benefits of implementation?
+                            </label>
+                            <div class="Multiselect">
+                                <apex:selectCheckboxes id="NewRequestbenefit" 
+                                value="{!BenefitsSelected}" layout="pageDirection" 
+                                 styleClass="makeRows">
+                                    <apex:selectOptions value="{!RequestBenefitOptions}"/>
+                                </apex:selectCheckboxes>
+                            </div> 
+                            <div class="usa-input-error" id="NewRequestbenefitError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="new-request-benefit-other">
+                                <label for="{!$Label.P360_508}newbenefitother">
+                                 If Other is selected, please provide additional information.
+                                </label>
+                                <apex:inputField id="newbenefitother" type="text" 
+                                value="{!request.ImplementationBenefitsOther__c}"/>
+                            </apex:outputPanel>
+                             <div class="usa-input-error" id="newbenefitotherError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please provide information for other benefits of Implementation.
+                                </span>
+                            </div>
+                            
+
+   
+                            <label for="{!$Label.P360_508}new-Request-Solution-Completion-Date" >
+                             Requested solution completion date?
+                            </label>
+                            <apex:inputField id="new-Request-Solution-Completion-Date" 
+                            value="{!request.RequestedSolutionCompletionDate__c }" type="date" 
+                            showdatepicker="false"/>
+                    
+                    <!--Section End for New new-Request-->
+                        </apex:outputPanel>    
+                    </apex:outputPanel>
+                    
+                        
+                    <!--Section start for Enhancement -->
+                    <apex:outputPanel id="Enhancement">
+                        <apex:outputPanel id="Request-Form2-Enhancement" rendered="{!request.Type__c=='Enhancement'}">
+                            <label for="{!$Label.P360_508}enhancementRequestname" class="usa-input-required">
+                            Please provide a title for this request.
+                            </label>
+                            <apex:inputField id="enhancementRequestname"  type="text" value="{!request.Name}" html-placeholder=""/>
+
+                            <div class="usa-input-error" id="enhancementRequestnameError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please enter a valid title for this request.
+                                </span>
+                            </div> 
+
+                            <label for="{!$Label.P360_508}enhancementRequestcategory" class="usa-input-required">
+                                What category does this enhancement request apply to?
+                            </label>
+                            
+                           <apex:actionRegion >
+                               <apex:inputField id="enhancementRequestcategory" type="text" value="{!request.EnhancementRequestCategory__c}" >
+                               <apex:actionSupport event="onchange" rerender="enhancementother" />
+                               </apex:inputField>
+                           </apex:actionRegion>
+
+                           <div class="usa-input-error" id="enhancementRequestcategoryError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please enter a valid category.
+                                </span>
+                            </div> 
+
+                            
+                           <apex:outputPanel id="enhancementother">
+                                <apex:outputPanel id="enhancement-other" rendered="{!request.EnhancementRequestCategory__c=='Other'}">
+                                    <label for="{!$Label.P360_508}enhancementRequestcategoryother" class="usa-input-required">
+                                       Provide the category of this enhancement request.
+                                    </label>
+                                    <apex:inputField id="enhancementRequestcategoryother" type="text" value="{!request.EnhancementRequestCategoryOther__c}" />
+                                    <div class="usa-input-error" id="enhancementRequestcategoryotherError" style="display: none;">
+                                        <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                            Please provide a valid other category.
+                                        </span>
+                                    </div> 
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+
+                            
+                            <label for="{!$Label.P360_508}enhancementRequestFederalMandateResult" class="usa-input-required">
+                            Is this request the result of a Federal Mandate?
+                            </label>
+
+                            <apex:actionRegion >
+                               <apex:inputField id="enhancementRequestFederalMandateResult" type="text" 
+                               value="{!request.ResultOfFederalMandate__c}"  >
+                               <apex:actionSupport event="onchange" rerender="enhancementFederalMandate" />
+                               </apex:inputField>
+                           </apex:actionRegion>
+
+                           <div class="usa-input-error" id="enhancementRequestFederalMandateResultError"
+                           style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please select Yes or No.
+                                </span>
+                            </div> 
+
+                            <apex:outputPanel id="enhancementFederalMandate">
+                                <apex:outputPanel id="Enhancement-Mandate-Desc" rendered="{!request.ResultOfFederalMandate__c=='Yes'}">
+                                    <label for="{!$Label.P360_508}enhancementRequestFederalMandateDescription">
+                                     Please provide a description of the mandate.
+                                    </label>
+                                    <apex:inputField id="enhancementRequestFederalMandateDescription" 
+                                    type="text" value="{!request.DescriptionOfMandate__c}"
+                                    onblur="textCounter(this, 'Size4',5000);" 
+                                    onkeyup="textCounter(this,'Size4',5000);"
+                                    StyleClass="usa-input-required"/>
+
+                                    <p style="margin-top: 0.1em;"> 
+                                            Remaining Characters : 
+                                            <span id="Size4" style="font-family:courier new; color:red" >5000</span> 
+                                    </p>
+
+                                    <div class="usa-input-error" 
+                                    id="enhancementRequestFederalMandateDescriptionError"
+                                    style="display: none;">
+                                        <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                            Please enter a valid description of the mandate.
+                                        </span>
+                                    </div> 
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+
+                            <label for="{!$Label.P360_508}enhancementRequestDescription" class="usa-input-required">
+                            Please provide a short description of the enhancement you are requesting.
+                            </label>
+                            <apex:inputField id="enhancementRequestDescription"  type="text" 
+                            value="{!request.Description__c}" 
+                            onblur="textCounter(this, 'Size5',5000);" 
+                            onkeyup="textCounter(this,'Size5',5000);"/>
+
+                            <p style="margin-top: 0.1em;"> 
+                                    Remaining Characters : 
+                                    <span id="Size5" style="font-family:courier new; color:red" >5000</span>
+                            </p>
+                            <div class="usa-input-error" id="enhancementRequestDescriptionError"
+                            style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please enter a valid description.
+                                </span>
+                            </div>
+
+
+                            <label for="{!$Label.P360_508}enhancement-Request-Task-Today">
+                            Please describe how you accomplish this task today (if applicable).
+                            </label>
+                            <apex:inputField id="enhancement-Request-Task-Today" type="text" value="{!request.HowDoYouAccomplishThisTaskToday__c}"
+                            onblur="textCounter(this, 'Size6',5000);" 
+                            onkeyup="textCounter(this,'Size6',5000);"/>
+
+                            <p style="margin-top: 0.1em;"> 
+                                    Remaining Characters : 
+                                    <span id="Size6" style="font-family:courier new; color:red" >5000</span>
+                            </p>
+
+                            <label for="{!$Label.P360_508}enhancementRequestBudget" class="usa-input-required">
+                             Does your management support this request?
+                            </label>
+                            <apex:actionRegion >
+                                <apex:inputField id="enhancementRequestBudget" type="text" value="{!request.DeptLeadershipSupportBudget__c}">
+                                    <apex:actionSupport event="onchange" reRender="enhancementManagementContactdiv"/>
+                                </apex:inputField>
+                            </apex:actionRegion>
+
+                            <div class="usa-input-error" id="enhancementRequestBudgetError"
+                            style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please select Yes or No.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="enhancementManagementContactdiv">
+                                <apex:outputPanel rendered="{!request.DeptLeadershipSupportBudget__c=='Yes'}">
+                                    <label for="{!$Label.P360_508}enhancementManagementContact" class="usa-input-required">
+                                     Please provide contact name.
+                                    </label>
+                                    <apex:inputField id="enhancementManagementContact" type="text" value="{!request.ManagementContactInfo__c}"/>
+                                    <div class="usa-input-error" id="enhancementManagementContactError"
+                                    style="display: none;">
+                                        <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                            Please provide a valid contact name.
+                                        </span>
+                                    </div>
+
+                                </apex:outputPanel>
+                            </apex:outputPanel>
+
+                            <label for="{!$Label.P360_508}enhancementRequestCostInfo" class="usa-input-required">
+                            Do you have any cost information at this time?
+                            </label>
+                            <apex:inputField id="enhancementRequestCostInfo" type="text" value="{!request.CurrentCostInformation__c}"/>
+
+                            <div class="usa-input-error" id="enhancementRequestCostInfoError"
+                            style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please select Yes or No.
+                                </span>
+                            </div>
+
+                            <label for="{!$Label.P360_508}ehancementRequestusersImpacted" class="usa-input-required">
+                             How many users are impacted by the implementation of this request?
+                            </label>
+                            <apex:inputField id="ehancementRequestusersImpacted" type="text" value="{!request.NumberOfUsersImpacted__c}"/>
+
+                            <div class="usa-input-error" id="ehancementRequestusersImpactedError"
+                            style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-email" role="alert">
+                                    Please select the number of users impacted.
+                                </span>
+                            </div>
+                            
+                            <label for="{!$Label.P360_508}enhancement-Request-usersImpacted-type" class="usa-input-required">
+                                What type of users are impacted by the implementation of this request?
+                            </label>
+
+                            <div class="Multiselect">
+                                <apex:selectCheckboxes id="EhancementUserImpact" 
+                                value="{!TypeOfUserSelected}" layout="pageDirection" 
+                                 styleClass="makeRows" >
+                                    <apex:selectOptions value="{!TypeofUserOptions}"/>
+                                </apex:selectCheckboxes>
+                            </div> 
+                            <div class="usa-input-error" id="EhancementUserImpactError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div>
+
+                            <apex:outputPanel id="Enhancement-request-impact-other">
+                                <label for="{!$Label.P360_508}enhancementotherimpactedUser">
+                                 If Other is selected, please provide additional information.
+                                </label>
+                                <apex:inputField id="enhancementotherimpactedUser" type="text" value="{!request.TypeOfUsersImpactedOther__c}"/>
+                            </apex:outputPanel>
+                            <div class="usa-input-error" id="enhancementotherimpactedUserError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please provide information for other impacted users.
+                                </span>
+                            </div>
+
+                           
+                            <label for="{!$Label.P360_508}enhancement-Request-benefit" class="usa-input-required">
+                             What are the benefits of implementation?
+                            </label>
+
+                            <div class="Multiselect">
+                                <apex:selectCheckboxes id="enhancementRequestbenefit" 
+                                value="{!BenefitsSelected}" layout="pageDirection" 
+                                 styleClass="makeRows">
+                                    <apex:selectOptions value="{!RequestBenefitOptions}"/>
+                                </apex:selectCheckboxes>
+                            </div>
+                            <div class="usa-input-error" id="enhancementRequestbenefitError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                    Please select at least one option to proceed.
+                                </span>
+                            </div> 
+
+                            <apex:outputPanel id="enhancement-request-benefit-other">
+                                <label for="{!$Label.P360_508}enhancement-benefit-other">
+                                 If Other is selected, please provide additional information.
+                                </label>
+                                <apex:inputField id="enhancementbenefitother" type="text" 
+                                value="{!request.ImplementationBenefitsOther__c }"/>
+                            </apex:outputPanel>
+
+                            <div class="usa-input-error" id="enhancementbenefitotherError" style="display: none;">
+                                <span class="usa-input-error-message" id="input-error-message-type" role="alert">
+                                   If Other is selected, please provide additional information.
+                                </span>
+                            </div> 
+
+                            <label for="{!$Label.P360_508}enhancement-Request-Solution-Completion-Date" >
+                             Requested enhancement completion date?
+                            </label>
+                            <apex:inputField id="enhancement-Request-Solution-Completion-Date" type="date" 
+                            value="{!request.RequestedEnhancementCompletionDate__c }" showdatepicker="false"/>
+                        </apex:outputPanel>
+                    </apex:outputPanel>
+                    
+
+                    <!--Section end for enhancement-->
+                    <apex:commandButton value="Submit" action="{!Submit}" onclick="this.blur()"/>
+                </apex:form>    
+            </section>
+        </div>
+       
+        
+         <footer class="usa-footer usa-footer-big" role="contentinfo">
+            <div class="usa-grid usa-footer-return-to-top" style="font-size: 20px;padding-top: 0px;">
+              <a href="#">Return to top</a>
+            </div>
+            <div class="usa-footer-primary-section"  style="padding-top: 0rem;padding-bottom: 0rem;background-color: #3C547C;">
+              <div class="usa-grid" id="footercontent2">
+                    <div class="usa-footer-logo usa-width-one-whole">
+                        <p style="text-align:center;color:#eeeeee;">
+                            <a href="{!$Label.P360_AboutUs_href}" target="_blank">About Us</a> | <a href=" {!$Label.P360_EBC_Guidance_And_Templates_href}" target="_blank">EBC Guidance And Templates</a> | Project 360
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        
+        <script>
+            // globals
+            var j$ =  jQuery.noConflict();
+            var pgStructure1 =  '#RequestForm\\:j_id5\\:';
+            var uservalues = [];
+            var enhancementbenefitother = [];
+            var newimpactbenefitvalues =[];
+
+
+            var disableEnterKey = function(){
+                j$(window).keydown(function(event){
+                    if(event.keyCode == 13) {
+                        event.preventDefault();
+                        return false;
+                    }
+                });
+            };
+
+            var hookFormSubmissionToForceValidation = function() {
+                j$( "form" ).submit(function() {
+                    return validateForm();
+                });
+            };
+
+            var FormObj = function () {
+                this.elementToScrollTo =    undefined;
+                this.errorsFound =          false;
+                this.firstErrorLoc =        100;
+                this.curErrorIndex =        0;
+                this.Requestorname = j$(pgStructure1+"Requestorname").val();
+                this.phone =                j$( pgStructure1 + "phone" ).val();
+                this.email =         j$( pgStructure1 + "email" ).val();
+                this.SSO = j$(pgStructure1+"SSO").val();
+                this.type = j$(pgStructure1+"type").val();
+                this.Region = j$(pgStructure1+"Region").val();
+                this.newRequestname = j$(pgStructure1+"newRequestname").val();
+                this.newRequestDescription = j$(pgStructure1+"newRequestDescription").val();
+                this.newRequestFederalMandateResult = j$(pgStructure1+"newRequestFederalMandateResult").val();
+                this.newRequestFederalMandateDescription =j$(pgStructure1+"newRequestFederalMandateDescription").val();
+                this.newRequestBudget = j$(pgStructure1+"newRequestBudget").val();
+                this.NewManagementContact = j$(pgStructure1+"NewManagementContact").val();
+                this.newRequestCostInfo = j$(pgStructure1+"newRequestCostInfo").val();
+                this.newRequestCostEstimate = j$(pgStructure1+"newRequestCostEstimate").val();
+                this.newRequestusersImpacted = j$(pgStructure1+"newRequestusersImpacted").val();
+                this.NewUserImpact = j$(pgStructure1+"NewUserImpact").find('input[type="checkbox"]:checked');
+                this.NewRequestbenefit = j$(pgStructure1+"NewRequestbenefit").find('input[type="checkbox"]:checked').length;
+                this.enhancementRequestname = j$(pgStructure1+"enhancementRequestname").val();
+                this.enhancementRequestcategory = j$(pgStructure1+"enhancementRequestcategory").val();
+                this.enhancementRequestcategoryother = j$(pgStructure1+"enhancementRequestcategoryother").val();
+                this.enhancementRequestFederalMandateResult = j$(pgStructure1+"enhancementRequestFederalMandateResult").val();
+                this.enhancementRequestFederalMandateDescription = j$(pgStructure1+
+                                                                    "enhancementRequestFederalMandateDescription").val();
+                this.enhancementRequestDescription = j$(pgStructure1+"enhancementRequestDescription").val();
+                this.enhancementRequestBudget = j$(pgStructure1+"enhancementRequestBudget").val();
+                this.enhancementManagementContact = j$(pgStructure1+"enhancementManagementContact").val();
+                this.enhancementRequestCostInfo = j$(pgStructure1+"enhancementRequestCostInfo").val();
+                this.ehancementRequestusersImpacted = j$(pgStructure1+"ehancementRequestusersImpacted").val();
+                this.EhancementUserImpact = j$(pgStructure1+"EhancementUserImpact").find('input[type="checkbox"]:checked');
+                
+                this.enhancementRequestbenefit = j$(pgStructure1+"enhancementRequestbenefit").find('input[type="checkbox"]:checked').length;
+               
+                this.propListOrder = ["Requestorname","phone","email","SSO","Region",
+                                      "type","newRequestname","newRequestDescription",
+                                      "newRequestFederalMandateResult",
+                                      "newRequestFederalMandateDescription",
+                                      "newRequestBudget","NewManagementContact",
+                                      "newRequestCostInfo","newRequestCostEstimate",
+                                      "newRequestusersImpacted",
+                                      "enhancementRequestname","enhancementRequestcategory",
+                                      "enhancementRequestcategoryother",
+                                      "enhancementRequestFederalMandateResult",
+                                      "enhancementRequestFederalMandateDescription",
+                                      "enhancementRequestDescription",
+                                      "enhancementRequestBudget",
+                                      "enhancementManagementContact",
+                                      "enhancementRequestCostInfo",
+                                      "ehancementRequestusersImpacted"];
+
+                this.checkIfFieldsAreEmpty = function(){
+                    for(var property in this){
+                        if(this.hasOwnProperty(property)){
+                            if(this[property] === ""){
+                                this.setErrorsFound(property);
+                            } else {
+                                j$( "#" + property + "Error" ).hide();
+                            }
+                        }
+                    }
+                }
+
+                this.setErrorsFound = function(propName){
+                    j$( "#" + propName + "Error" ).show();
+                    this.errorsFound = true;
+                    this.curErrorIndex = this.getPropertyListIndex(propName);
+                    if(this.firstErrorLoc > this.curErrorIndex){
+                        this.firstErrorLoc = this.curErrorIndex;
+                        this.setElementToScrollTo(propName);
+                    }
+                }
+
+
+                this.getPropertyListIndex = function(propName){
+                    var result = -1;
+                    for(var i = 0; i < this.propListOrder.length; i++){
+                        if(this.propListOrder[i] == propName){
+                            result = i;
+                        }
+                    }
+                    return result;
+                }
+
+
+                this.setElementToScrollTo = function(propName){
+                    this.elementToScrollTo = j$( pgStructure1 + propName);
+                }
+
+
+                this.checkifNewUserImpactCheckboxfilled = function(){
+                    if(this.NewUserImpact.length==0 && this.type=="New"){
+                        this.setErrorsFound("NewUserImpact");
+                        return false;
+                    }  
+                }
+
+                this.checkifNewUserOtherchecked = function(){
+                    uservalues = new Array();
+                    var flag;
+                    j$(pgStructure1+"NewUserImpact").find('input[type="checkbox"]:checked').each(function(){
+
+                        uservalues.push(j$(this).val());
+                        otherval = j$(pgStructure1+"otherimpactedUser").val();
+                        if(j$.inArray("Other", uservalues) !== -1 && otherval.length==0){ 
+                          flag = true;
+                        }else if (j$.inArray("Other", uservalues) == -1){
+                            flag = false;
+                        }
+                    });
+                    if(flag==true){
+                        //flag = false;
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+
+                
+                this.checkifNewUserError = function(){
+                    if(this.checkifNewUserOtherchecked()==true){
+                        this.setErrorsFound("otherimpactedUser");
+                        return false;
+                    }else{
+                         j$("#otherimpactedUserError").hide();
+                        return true;
+                    }  
+                }
+                
+
+                this.checkifNewBenefitCheckboxfilled = function(){
+                    if(this.NewRequestbenefit==0 && this.type=="New"){
+                        this.setErrorsFound("NewRequestbenefit");
+                        return false;
+                    }     
+                }
+
+                
+                this.checkBenefitotherchecked = function(){
+                    var otherchecked = false;
+                    newimpactbenefitvalues = new Array();
+                    
+                    j$(pgStructure1+"NewRequestbenefit").find('input[type="checkbox"]:checked').each(function(){
+
+
+                        newimpactbenefitvalues.push(j$(this).val());
+                        //var checkeduservals = uservalues.join (", ");
+                        otherbenefitval = j$(pgStructure1+"newbenefitother").val();
+                        if(j$.inArray("Other", newimpactbenefitvalues) !== -1 && otherbenefitval.length==0){
+                            
+                            otherchecked = true;
+                        }else if(j$.inArray("Other", newimpactbenefitvalues) == -1){
+                                otherchecked = false;
+                            }
+                    });
+
+                    if(otherchecked){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+
+
+                this.checkBenefitOtherError = function(){
+                    if(this.checkBenefitotherchecked()==true){
+                        this.setErrorsFound("newbenefitother");
+                        return false;
+                    }else{
+                        j$("#newbenefitotherError").hide();
+                        return true;
+                    }  
+
+                }
+
+
+                this.checkifEnhancementBenefitCheckboxfilled = function(){
+                    if(this.enhancementRequestbenefit==0 && this.type=="Enhancement"){
+                        this.setErrorsFound("enhancementRequestbenefit");
+                        return false;
+                    }     
+                }
+
+
+                this.checkEnhancementBenefitotherchecked = function(){
+                    var otherenhancementchecked = false;
+                    enhancementimpactbenefitvalues = new Array();
+                    
+                    j$(pgStructure1+"enhancementRequestbenefit").find('input[type="checkbox"]:checked').each(function(){
+
+
+                        enhancementimpactbenefitvalues.push(j$(this).val());
+                        //var checkeduservals = uservalues.join (", ");
+                        otherenhancementbenefitval = j$(pgStructure1+"enhancementbenefitother").val();
+                        if(j$.inArray("Other", enhancementimpactbenefitvalues) !== -1 && otherenhancementbenefitval.length==0){
+                            
+                            otherenhancementchecked = true;
+                        }else if(j$.inArray("Other", enhancementimpactbenefitvalues) == -1){
+                                otherenhancementchecked = false;
+                            }
+                    });
+
+                    if(otherenhancementchecked){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+
+                 this.checkEnhancementBenefitOtherError = function(){
+                    if(this.checkEnhancementBenefitotherchecked()==true){
+                        this.setErrorsFound("enhancementbenefitother");
+                        return false;
+                    }else{
+                        j$("#enhancementbenefitotherError").hide();
+                        return true;
+                    }  
+
+                }
+
+                this.checkifEnhancementUserImpactCheckboxfilled = function(){
+                    if(this.EhancementUserImpact.length==0 && this.type=="Enhancement"){
+                        this.setErrorsFound("EhancementUserImpact");
+                        return false;
+                    }  
+                }
+
+                this.checkifEnhancementUserOtherchecked = function(){
+                    enhancementuservalues = new Array();
+                    var flag;
+                    j$(pgStructure1+"EhancementUserImpact").find('input[type="checkbox"]:checked').each(function(){
+                        enhancementuservalues.push(j$(this).val());
+                        otherenhancementval = j$(pgStructure1+"enhancementotherimpactedUser").val();
+                        if(j$.inArray("Other", enhancementuservalues) !== -1 && otherenhancementval.length==0){ 
+                          flag = true;
+                        }else if (j$.inArray("Other", enhancementuservalues) == -1){
+                            flag = false;
+                        }
+                       
+                    });
+                    if(flag==true){
+                        //flag = false;
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+
+                
+                this.checkifEnhancementUserError = function(){
+                    if(this.checkifEnhancementUserOtherchecked()==true){
+                        this.setErrorsFound("enhancementotherimpactedUser");
+                        return false;
+                    }else{
+                         j$("#enhancementotherimpactedUserError").hide();
+                        return true;
+                    }  
+                }
+
+
+                this.checkIfValidPhoneNumber = function(){
+                    if(!this.isValidUSPhoneNumber()) {
+                        this.setErrorsFound("phone");
+                        return false;
+                    }
+                }
+
+                
+                this.isValidUSPhoneNumber = function(){
+
+                   return /^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{4}$/.test(this.phone);
+                }
+                
+                this.checkIfValidEmailAddress = function() {
+                    if(!this.isValidEmail()){
+
+                        this.setErrorsFound("email");
+                        return false;
+                    }
+                }
+
+                this.isValidEmail = function() {
+                    return /^[a-zA-Z0-9._|\%#~`=?&/$^*!}{+-]+@[a-zA-Z0-9.-]+\.gov|mil|us$/.test(this.email);
+                }
+                
+                this.scrollToFirstError = function() {
+                    try {
+                        j$("html,body").animate({
+
+                            scrollTop: this.elementToScrollTo.offset().top
+                        });
+                    } catch(err){
+                        window.scrollTo(0,0);
+                    }
+                }
+            };
+
+            var validateForm = function () {
+                var form = new FormObj();
+                form.checkIfFieldsAreEmpty();
+                form.checkIfValidPhoneNumber();
+                form.checkIfValidEmailAddress();
+                form.checkifNewUserImpactCheckboxfilled();
+                form.checkifNewBenefitCheckboxfilled();
+                form.checkifEnhancementBenefitCheckboxfilled();
+                form.checkifEnhancementUserImpactCheckboxfilled();
+                form.checkifNewUserError();
+                form.checkBenefitOtherError();
+                form.checkEnhancementBenefitOtherError();
+                form.checkifEnhancementUserError();
+
+                if(form.errorsFound){
+                    form.scrollToFirstError();
+                    return false;
+                } else {
+                    return true;
+                }
+            };
+
+            (function(){
+                disableEnterKey();
+                hookFormSubmissionToForceValidation();    
+            }());
+        </script>
+        <apex:includeScript value="{!URLFOR($Resource.wds, '/uswds-0.9.0/js/uswds.min.js')}"/>
+    </body>
+</apex:page>

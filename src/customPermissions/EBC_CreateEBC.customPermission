@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomPermission xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>EBC - This custom permission will be used to allow users to create EBC record (Custom object: Executive Business Case)</description>
+    <label>EBC-CreateEBC</label>
+</CustomPermission>

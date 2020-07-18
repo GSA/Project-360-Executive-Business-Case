@@ -1,0 +1,4 @@
+<apex:page standardController="Executive_Business_Case__c">
+<p></p><p></p><p></p><p></p><p></p>
+<p><apex:image id="theImage" value="/servlet/servlet.ImageServer?id={!Executive_Business_Case__c.imageLink__c}&oid={!Executive_Business_Case__c.OrgID__c}"/>
+</p></apex:page>

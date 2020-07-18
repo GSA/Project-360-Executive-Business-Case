@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Stage__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Fiscal_Year__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Executive_Business_Case__c.Requested_Total_Amount_5_Years__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Executive_Business_Case__c.Funded_Total_Amount_5_Years__c</field>
+    </columns>
+    <description>Report on Funding Approval Decision (Approved - Fully Funded, Approved - Partially Funded, Approved - Not Funded, Denied)</description>
+    <filter>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Stage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Funding Approval</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Fiscal_Year__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2015</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Executive_Business_Case__c.Type_of_Funding_Allocated__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EBCs by Funding Approval FY 2015</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Executive_Business_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Executive_Business_Case__c.Requested_Total_Amount_5_Years__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

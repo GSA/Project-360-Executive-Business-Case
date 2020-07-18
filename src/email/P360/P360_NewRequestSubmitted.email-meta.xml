@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>P360 - this email template contains fields for the Request object when a new Request enters the application</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>P360-New Request Submitted</name>
+    <style>none</style>
+    <subject>A {!IF(CONTAINS(P360_Request__c.RequestType__c,&apos;Enhancement&apos;),&apos;new Application Enhancement&apos;,&apos;New Application&apos;)} request submitted</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

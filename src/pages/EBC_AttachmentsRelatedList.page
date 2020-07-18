@@ -1,0 +1,38 @@
+<apex:page standardController="Executive_Business_Case__c" showHeader="true" sidebar="true">
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script>
+	var j$ = jQuery.noConflict();
+	j$( document ).ready(function() {
+
+		j$("a").each(function() {
+			var thisLink = j$(this);
+			console.log(thisLink.html());
+			if(thisLink.html() === 'Preview'){
+				thisLink.attr('style','display:none');
+			} else if (thisLink.html() == 'Del'){
+				// do nothing
+			} else {
+				thisLink.attr('target','_top');
+			}
+		});
+
+		j$( "button, input[type='button']" ).each(function() {
+			var thisButton = j$(this);
+			console.log('button found');
+			console.log(thisButton.val());
+			thisButton.attr('style','display:none');
+		});
+
+	});
+</script>
+
+<apex:relatedList subject="{!Executive_Business_Case__c}" list="CombinedAttachments"/>
+	
+</apex:page>
+
+<!-- <apex:page standardController="Executive_Business_Case__c">       
+<apex:relatedList list="CombinedAttachments">
+<apex:facet name="header">&nbsp;</apex:facet>  
+</apex:relatedList>
+</apex:page> -->

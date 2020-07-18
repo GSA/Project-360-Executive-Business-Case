@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>P360_Request__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>P360-Request-ApplicationEnhancement</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Costs__c</fieldNames>
+        <fieldNames>LevelOfEffort__c</fieldNames>
+        <fieldNames>OwnerId</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Platform Team to gather requirements for the request&lt;/li&gt;&lt;li&gt;Platform Team updates the &lt;strong&gt;Cost &lt;/strong&gt;and &lt;strong&gt;Level of Effort &lt;/strong&gt;based upon this analysis (required before moving to Solution/LOE Complete)&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Analysis</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>IsConverted__c</fieldNames>
+        <fieldNames>Project__c</fieldNames>
+        <info>The request has been approved and has now become an executable Project.&lt;br&gt;To navigate to the new Project, please select the link listed in the &lt;strong&gt;Project&lt;/strong&gt; field.</info>
+        <picklistValueName>Approved</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Costs__c</fieldNames>
+        <fieldNames>BRGApproved__c</fieldNames>
+        <info>Because this request costs more than $150,000 to implement, it must be presented and approved by the BRG.&lt;br&gt;Users &lt;strong&gt;must&lt;/strong&gt; set the BRG Approved field to &lt;strong&gt;Yes&lt;/strong&gt; prior to advancing 
+
+&lt;ul&gt;&lt;li&gt;Choosing &lt;strong&gt;BRG Approved&lt;/strong&gt; as &lt;strong&gt;Yes &lt;/strong&gt;will set the status as &lt;strong&gt;Approved &lt;/strong&gt;and will automatically create a new project&lt;/li&gt;&lt;li&gt;Choosing &lt;strong&gt;BRG Approved&lt;/strong&gt; as &lt;strong&gt;No &lt;/strong&gt;will set the status as &lt;strong&gt;Cancelled&lt;/strong&gt;&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Awaiting BRG Approval</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Business_Value__c</fieldNames>
+        <info>This request did not meet the specified criteria required to become a Corporate Services Project.</info>
+        <picklistValueName>Cancelled</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>OwnerId</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Request will be assigned to a Triage Team Member&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>New Request</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Costs__c</fieldNames>
+        <fieldNames>LevelOfEffort__c</fieldNames>
+        <fieldNames>OwnerId</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Triage Team member will complete a Project Detail, fill the gaps in the request, and present to the Corporate Services Jam session&lt;/li&gt;&lt;li&gt;Create a high level &lt;strong&gt;Cost &lt;/strong&gt;and &lt;strong&gt;Level of Effort&lt;/strong&gt; estimates (required before moving to Solution/LOE Complete)&lt;/li&gt;&lt;li&gt;Jam Team to provide a Platform and Go/No-Go Decision&lt;/li&gt;&lt;li&gt;Platform Owner will be assigned&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Scoping</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Business_Value__c</fieldNames>
+        <fieldNames>Costs__c</fieldNames>
+        <info>&lt;ul&gt;&lt;li&gt;Complete the final solution and ensure that it is a Platform-Fit&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Solution/LOE Complete</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>P360_Enhancement</recordTypeName>
+</PathAssistant>

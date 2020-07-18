@@ -1,0 +1,12 @@
+<apex:page StandardController="GPM_Project__c" action="{!URLFOR($Action.GPM_Project__c.Share,GPM_Project__c.Id)}">
+<!--
+<script type="text/javascript">
+console.log('hello');
+   function popupwindow(){
+   console.log('hello2');
+       window.open('https://gsa--eeodv28dvn.lightning.force.com/one/one.app?source=aloha#/setup/page?nodeId=SecuritySharing&address=%2Fp%2Fshare%2FCustomObjectSharingEdit%3FparentId%3Da0Cr0000000qyTw%26retURL%3D%252Fp%252Fshare%252FCustomObjectSharingDetail%253FparentId%253Da0Cr0000000qyTwEAI%2526isdtp%253Dp1%2526sfdcIFrameOrigin%253Dhttps%25253A%25252F%25252Fgsa--eeodv28dvn.lightning.force.com%2526sfdcIFrameHost%253Dweb%26isdtp%3Dp1&t=1485806956502',
+'Popup','height=400,width=1000,left=100,top=100,scrollbars=yes,toolbar=no,status=no');
+   }
+   </script>
+   -->
+</apex:page>

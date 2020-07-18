@@ -1,0 +1,58 @@
+.THIS #progress{
+    position: absolute;
+    left: 0;
+    top: .625rem;
+    height: .25rem;
+    display: block;
+    width: 100%;
+    z-index: 0;
+    background: #e0e5ee;
+
+}
+
+.THIS .approved{
+    color:white;
+    padding-top:3px;
+}
+
+.THIS .pending{
+    color:white;
+    margin-left:6px;
+    position:absolute;
+}
+
+.THIS .denied{
+    color:white;
+    margin-left:6px;
+    padding-top:3px;
+    position:absolute;
+}
+
+.THIS .stageone{
+    color:white;
+    margin-left:6px;
+    padding-top:3px;
+}
+
+.THIS .stageonepending{
+    color:white;
+    margin-left:6px;
+
+}
+
+.THIS .progress{
+    background-color:#92D051;
+}
+
+.THIS .pendingphase{
+    color:#36B7DA;
+}
+.THIS .approvedphase{
+    color:#92D051;
+}
+.THIS .deniedphase{
+    color:#FC0202;
+}
+.THIS .fundingphase{
+    color:#F79646;
+}

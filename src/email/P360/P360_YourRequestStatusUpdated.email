@@ -1,0 +1,8 @@
+Dear {!P360_Request__c.CreatedBy}, 
+
+Your ​"{!P360_Request__c.Name}" request has been updated to "{!P360_Request__c.Status__c}". For more information on your request, please navigate here {!P360_Request__c.Link}.
+
+
+Thank you, 
+Corporate IT Services Request Team
+Email: CorporateITServicesRequestSupport@gsa.gov

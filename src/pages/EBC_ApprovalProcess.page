@@ -1,0 +1,97 @@
+<!--Last Updated at 11.09am 1/10/17 by Ramesh Dugar-->
+<!--Error message update and hidden the submit for approval button for all stages-->
+<!--Last Updated at 11.09am 12/18/15 by Ramesh Dugar-->
+
+<apex:page standardController="Executive_Business_Case__c" sidebar="false" standardStylesheets="true">
+
+<apex:includeScript value="{!$Resource.EBC_jQuery}"/>
+
+
+<script>
+  var $j = jQuery.noConflict();
+  function navigateToUrl(url) {
+    url = url.replace("%2Fapex%2FEBCApprovalProcess%3Finline%3D1%26core.apexpages.devmode.url%3D1%26id%3D", " ");
+    window.parent.location.href = url;
+    window.close();
+  }
+  $j(document).ready(function(){
+    var recordId = "";
+    var stageValue="";
+    var NonIT="";
+    var highestReviewValue="";
+    var Status="";
+    var CFOReviewDate ="";
+    var SAReviewDate="";
+    var PABReviewDate="";
+    var IRBReviewDate="";
+
+
+    stageValue = '{!JSENCODE(Executive_Business_Case__c.Stage__c)}';
+    NonIT = '{!JSENCODE(Executive_Business_Case__c.Non_IT_IT__c)}';
+    highestReviewValue = '{!JSENCODE(Executive_Business_Case__c.Highest_Review__c)}';
+    Status = '{!JSENCODE(Executive_Business_Case__c.Status__c)}';
+    CFOReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.CFO_Review_Date__c))}';
+    SAReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.SA_Review_Completed_Date__c))}';
+    PABReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.PAB_Review_Date__c))}';
+    IRBReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.IRB_Review_Date__c))}';
+    TypeOfFunding = '{!JSENCODE(Executive_Business_Case__c.Type_of_Funding_Allocated__c)}';
+          
+          
+    $j(".btn").attr('target', '_parent');
+    $j( "a" ).each(function( index ) {
+      $j( this ).attr('target', '_parent');    
+    });
+      
+    if(stageValue!="" && Status!=""){
+      $j("input[Title='Submit for Approval']").hide();       
+    }
+          
+          
+    $j(".actionColumn").find("a").each(function(i){
+      var title = $j(this).attr('title');
+      var str2 = "Approve / Reject";
+      if(title.indexOf(str2) != -1){             
+                  // $j(this).attr("href","ApproveRejectRequest?id={!Executive_Business_Case__c.Id}");
+        $j(this).attr('target','_top');
+        $j(this).click(function(event) {
+                    //alert(event);
+          if(stageValue != "" && stageValue == "Internal Review" ){
+            if(NonIT == "" || highestReviewValue == "" || CFOReviewDate=="" ){              
+                alert("To proceed with Internal Review, please ensure ALL of the following fields are complete:\n\n1. EBC - Highest  Review \n2. EBC - CFO Review Date \n\nNOTE: If 'IT' is selected, please enter \'EBC - GSA IT Review Completed Date\' to proceed  with the approval.");                          
+                              //event.preventDefault();              
+                return false;
+            }
+            else if(NonIT=="IT" ){
+              if(SAReviewDate==""){                  
+                alert("To proceed with Internal Review, please ensure the following field is complete: \n\n1. EBC - GSA IT Review Completed Date");
+                return false;
+              }
+            }
+                         
+          }
+                                    
+          else if(stageValue != "" && stageValue == "Governance Review"){
+            if(PABReviewDate=="" && IRBReviewDate==""){
+                alert("To proceed with Governance Review, please ensure EITHER of the following fields are entered: \n \n1. EBC - PAB Review Date \n2. EBC - IRB Review Date");
+                return false;
+            }
+                          
+          }
+          else if(stageValue != "" && stageValue == "Funding Approval"){
+            if(TypeOfFunding==""){
+                alert("To proceed with Funding Approval, please ensure that \"Type of Funding Allocated\" is entered.");
+                return false;
+            }                
+          }
+        });
+        return false;
+      }
+   
+      else {
+        $j(this).attr('target','_top');
+      }
+    });        
+  });      
+</script>
+<apex:relatedList list="ProcessSteps" pageSize="500" />
+</apex:page>

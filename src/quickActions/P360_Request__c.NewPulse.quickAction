@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<QuickAction xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>P360 - This action will create a pulse record from the request record. Process Builder is being used to update the request upon creation of pulse.</description>
+    <fieldOverrides>
+        <field>Accomplishments__c</field>
+        <formula>&apos;Please enter individual Accomplishments on a separate line&apos;</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>Issues__c</field>
+        <formula>&apos;Please enter individual Issues on a separate line&apos;</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>StatusUpdateOrComments__c</field>
+        <formula>&apos;&apos;</formula>
+    </fieldOverrides>
+    <fieldOverrides>
+        <field>UpcomingActionItems__c</field>
+        <formula>&apos;Please enter individual Action Items on a separate line&apos;</formula>
+    </fieldOverrides>
+    <label>New Pulse</label>
+    <optionsCreateFeedItem>false</optionsCreateFeedItem>
+    <quickActionLayout>
+        <layoutSectionStyle>TwoColumnsLeftToRight</layoutSectionStyle>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Help__c</field>
+                <uiBehavior>Readonly</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>RequestName__c</field>
+                <uiBehavior>Required</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>StatusUpdateOrComments__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Accomplishments__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+        <quickActionLayoutColumns>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>true</emptySpace>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>UpcomingActionItems__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+            <quickActionLayoutItems>
+                <emptySpace>false</emptySpace>
+                <field>Issues__c</field>
+                <uiBehavior>Edit</uiBehavior>
+            </quickActionLayoutItems>
+        </quickActionLayoutColumns>
+    </quickActionLayout>
+    <successMessage>Request updated successfully.</successMessage>
+    <targetObject>P360_Pulse__c</targetObject>
+    <targetParentField>RequestName__c</targetParentField>
+    <targetRecordType>P360_Pulse__c.RequestPulse</targetRecordType>
+    <type>Create</type>
+</QuickAction>

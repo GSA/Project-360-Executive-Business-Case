@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>GPM_Project__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>P360-Project-Simple Project</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Actual_End_Date__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Ensure all Deliverables have been met&lt;/li&gt;&lt;li&gt;Ensure project Milestones are updated and closed out &lt;/li&gt;&lt;li&gt;Derive and Lessons Learned&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Close-Out/Closed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>Initial Request has been received, vetted, and has been approved</info>
+        <picklistValueName>Concept Approval</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Performance_Status__c</fieldNames>
+        <fieldNames>Actual_Start_Date__c</fieldNames>
+        <fieldNames>Accomplishments__c</fieldNames>
+        <fieldNames>StatusUpdateOrComments__c</fieldNames>
+        <fieldNames>Project_Status__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Build the Deliverables defined in the Initiating Phase&lt;/li&gt;&lt;li&gt;Obtain Customer Sign off for the Deliverables&lt;/li&gt;&lt;li&gt;Continuously track action items, milestones and risks/issues&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Executing</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Project_Description__c</fieldNames>
+        <fieldNames>Office_Portfolio__c</fieldNames>
+        <fieldNames>Service_Staff_Office__c</fieldNames>
+        <fieldNames>Region__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Define the Objectives, Scope, and Deliverables, Purpose and a list of Deliverables to be produced&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Initiating</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Planned_Start_Date__c</fieldNames>
+        <fieldNames>Planned_End_Date__c</fieldNames>
+        <fieldNames>Project_Manager__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Define Project Timeline and Milestones&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Planning</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>P360_SimpleProject</recordTypeName>
+</PathAssistant>

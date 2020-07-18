@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomTab xmlns="http://soap.sforce.com/2006/04/metadata">
+    <description>P360 - Visualforce Tab for Project 360 Home Page</description>
+    <label>Project 360</label>
+    <motif>Custom16: Bank</motif>
+    <page>P360_HomePage</page>
+</CustomTab>

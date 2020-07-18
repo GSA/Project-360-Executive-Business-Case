@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>P360 - this email template contains fields for the Request and Project objects and is sent to the submitter when his/her request gets converted into a &apos;Corporate IT Services&apos; project.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>P360-Your Request Converted</name>
+    <style>none</style>
+    <subject>Project Conversion Confirmation</subject>
+    <type>text</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

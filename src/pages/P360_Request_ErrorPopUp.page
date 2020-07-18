@@ -1,0 +1,16 @@
+<apex:page standardController="P360_Request__c" showHeader="false" sidebar="false" standardStylesheets="false"
+doctype="html-5.0">
+<apex:includeScript value="{!$Resource.EBC_jQuery}"/>
+<apex:outputPanel rendered="{!IF(AND(NOT(ISBLANK(P360_Request__c.Costs__c)),P360_Request__c.Costs__c>=500000,P360_Request__c.isConvertedtoEBC__c==false),True,false)}">
+	
+	<b style="color:red;font-size: 15px;">Note : The cost entered for this Request is greater than $500,000. Please use 'Convert to EBC' button to create an Executive Business Case Concept.</b>
+	<br/>
+</apex:outputPanel>
+<apex:outputPanel rendered="{!P360_Request__c.isConvertedtoEBC__c}">
+	
+	<b style="color:green;font-size: 15px;">The Request has been converted to Executive Business Case Concept successfully. Click <a 
+	href="/{!P360_Request__c.ExecutiveBusinessCase__c}" target="_blank">here</a> to view the Executive Business Case Concept.</b>
+	<br/>
+</apex:outputPanel>
+	
+</apex:page>

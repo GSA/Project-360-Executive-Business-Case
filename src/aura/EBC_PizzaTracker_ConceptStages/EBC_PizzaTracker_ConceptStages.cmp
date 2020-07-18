@@ -1,0 +1,81 @@
+<aura:component controller="EBC_PizzaTrackerController" implements="flexipage:availableForAllPageTypes,force:appHostable,force:hasRecordId" access="global">
+	<ltng:require styles="/resource/SLDS/assets/styles/salesforce-lightning-design-system.css,/resource/SLDS/assets/styles/salesforce-lightning-design-system.min.css"/>
+	<aura:attribute name="recordId" type="Id" default="a0pr0000000Cuic"/>
+  	<aura:attribute name="ExValue" type="string"/>
+  	<aura:attribute name="PerValue" type="double"/>
+    <aura:attribute name="lival1" type="string"/>
+  	<aura:attribute name="lival2" type="string"/>
+  	<aura:attribute name="lival3" type="string"/>
+  	<aura:attribute name="lival4" type="string"/>
+    <aura:attribute name="lisubval1" type="string"/>
+  	<aura:attribute name="lisubval2" type="string"/>
+  	<aura:attribute name="lisubval3" type="string"/>
+  	<aura:attribute name="lisubval4" type="string"/>
+    <aura:attribute name="lisubvalClassone" type="string"/>
+    <aura:attribute name="lisubvalClasstwo" type="string"/>
+  	<aura:attribute name="lisubvalClassthree" type="string"/>
+  	<aura:attribute name="lisubvalClassfour" type="string"/>
+    <aura:attribute name="phaseclassone" type="string"/>
+  	<aura:attribute name="phaseclasstwo" type="string"/>
+  	<aura:attribute name="phaseclassthree" type="string"/>
+  	<aura:attribute name="phaseclassfour" type="string"/>
+    <aura:handler name="init" value="{!this}" action="{!c.myAction}"/>
+  	<aura:handler event="force:refreshView" action="{!c.myAction}" />
+  	<br></br><br></br>
+   	<div class="slds-wizard" role="navigation">
+        <ol class="slds-wizard__list">
+         
+            <li class="slds-wizard__item" id="li1">
+                <a href="javascript:void(0);" class="slds-wizard__link">
+                    <span class="slds-wizard__marker" id="ConceptRequest">    
+                        <div id="lisubval1" class="{!v.lisubvalClassone}"><b><aura:unescapedHTML value="{!v.lisubval1}"/></b></div>
+                    </span>
+                    <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="EBC Request" style="line-height: 4.25;margin-top: -62px;">
+                        Concept Request <br/>
+                        <b class="{!v.phaseclassone}">{!v.lival1}</b>
+                    </span>
+                </a>
+            </li>
+        
+            <li class="slds-wizard__item" id="li2">
+                <a href="javascript:void(0);" class="slds-wizard__link">
+                    <span class="slds-wizard__marker" id="Executive">
+                        <div id="lisubval2" class="{!v.lisubvalClasstwo}"><b><aura:unescapedHTML value="{!v.lisubval2}"/></b></div>
+                    </span>
+                    <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="Executive Sponsor" style="line-height: 4.25 ;margin-top: -62px;">
+                        Executive Sponsor Review <br/>&nbsp;
+                        <b class="{!v.phaseclasstwo}">{!v.lival2}</b>
+                    </span>
+                </a>
+            </li>
+            
+            <li class="slds-wizard__item " id="li3">
+              <a href="javascript:void(0);" class="slds-wizard__link">
+                <span class="slds-wizard__marker" id="GSAIT">
+                    <div id="lisubval3" class="{!v.lisubvalClassthree}"><b><aura:unescapedHTML value="{!v.lisubval3}"/></b></div>
+                </span>
+                  <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="GSAIT CFO Review" style="line-height: 4.25;margin-top: -62px;">
+                      GSA IT/CFO Review <br/>&nbsp;
+                      <b class="{!v.phaseclassthree}">{!v.lival3}</b>
+                  </span>
+              </a>
+            </li>
+            
+            <li class="slds-wizard__item " id="li4">
+              <a href="javascript:void(0);" class="slds-wizard__link">
+                <span class="slds-wizard__marker" id="GovernanceReview">
+                    <div id="lisubval4" class="{!v.lisubvalClassfour}"><b><aura:unescapedHTML value="{!v.lisubval4}"/></b></div>  
+                </span>
+                  <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="Governance Review" style="line-height:4.25 ;margin-top: -62px;">
+                      Governance Review<br/>&nbsp;
+                      <b class="{!v.phaseclassfour}">{!v.lival4}</b>
+                  </span>
+              </a>
+            </li>
+            
+        </ol>
+        <span class="slds-wizard__progress" id="progress">
+          <span class="slds-wizard__progress-bar progress" style="{!'width:'+v.PerValue+'%'}"></span>
+        </span>
+	</div>
+</aura:component>

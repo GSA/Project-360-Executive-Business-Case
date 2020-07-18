@@ -1,0 +1,33 @@
+<apex:page standardController="Executive_Business_Case__c" showHeader="true" sidebar="false" tabStyle="Executive_Business_Case__c">
+
+    <apex:image url="{!URLFOR($Resource.EBC,'1RequestPending.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==1}" alt="Approved and Fully Funded"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'2SponsorPending.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==2}" alt="Approved and Fully Funded"/>
+
+
+    <apex:image url="{!URLFOR($Resource.EBC,'3SponsorDenied.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==3}"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'4InternalPending.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==4}"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'5InternalDenied.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==5}"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'6GovernancePending.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==6}"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'7GovernanceDenied.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==7}"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'8FundingPending.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==8}"/>
+
+    
+    <apex:image url="{!URLFOR($Resource.EBC,'9FundingApprovedFullyFunded.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==9}" alt="Approved and Fully Funded"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'10FundingApprovedPartiallyFunded.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==10}" alt="Approved and partially Funded"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'11FundingApprovedNotFunded.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==11}" alt="Approved and Not Funded"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'12FundingDenied.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==12}"/>
+
+    <apex:image url="{!URLFOR($Resource.EBC,'13FundingApproved.png')}" rendered="{!Executive_Business_Case__c.imageTracker__c==13}" alt="It is only approved"/>
+            
+    
+
+</apex:page>

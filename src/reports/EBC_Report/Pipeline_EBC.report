@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Project_Start_Date__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Project_End_Date__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Executive_Business_Case__c.Requested_Total_Amount_5_Years__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Portfolio__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Service_or_Staff_Office_SSO__c</field>
+    </columns>
+    <columns>
+        <field>CUST_OWNER_NAME</field>
+    </columns>
+    <description>Report of all EBCs that are currently in the pipeline (Executive Sponsor/Delegate Review, Internal Review, Governance Review)</description>
+    <filter>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Stage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Executive Sponsor Review,Internal Review,Governance Review</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Executive_Business_Case__c.Stage__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Pipeline EBC</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Executive_Business_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Executive_Business_Case__c.Status__c</sortColumn>
+    <sortOrder>Desc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

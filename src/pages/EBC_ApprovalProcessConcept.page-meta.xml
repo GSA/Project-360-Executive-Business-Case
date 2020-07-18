@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApexPage xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>38.0</apiVersion>
+    <availableInTouch>false</availableInTouch>
+    <confirmationTokenRequired>false</confirmationTokenRequired>
+    <description>EBC - This VF page will be used for inline approval history related list on the detail pages of the concept record types.</description>
+    <label>EBC_ApprovalProcessConcept</label>
+</ApexPage>

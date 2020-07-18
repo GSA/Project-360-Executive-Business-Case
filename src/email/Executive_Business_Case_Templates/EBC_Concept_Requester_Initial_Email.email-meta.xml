@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EBC Concept Email to Requester when the request is submitted initially</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>EBC Concept - Requester Initial Email</name>
+    <style>none</style>
+    <subject>Concept Request Case Submitted</subject>
+    <textOnly>Dear {!Executive_Business_Case__c.CreatedBy},
+
+Your Concept request has been submitted for approval by your Executive Sponsor. 			Please view the business case for information pertaining to the decision. 			The business case will now be reviewed by the your Executive Sponsor.
+
+Note: You are able to recall your business case at any point in the process until it is finally approved or denied by pressing the &quot;Recall Approval Request&quot; 			button in the Approval History section on the business case.  You are no longer able to edit the record now that you have submitted it for approval.
+
+Project Name: {!Executive_Business_Case__c.Name}
+Created Date: {!Executive_Business_Case__c.CreatedDate}
+Executive Sponsor Name: {!Executive_Business_Case__c.Executive_Sponsor_Delegate__c}
+Abstract: {!Executive_Business_Case__c.Abstract__c}
+Link to Case: {!Executive_Business_Case__c.Link}
+
+Thank you.  If you have any questions, please email: EBCMailbox@gsa.gov.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

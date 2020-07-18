@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Stage__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Fiscal_Year__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Executive_Business_Case__c.Requested_Total_Amount_5_Years__c</field>
+    </columns>
+    <columns>
+        <aggregateTypes>Sum</aggregateTypes>
+        <field>Executive_Business_Case__c.Funded_Total_Amount_5_Years__c</field>
+    </columns>
+    <filter>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Stage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Funding Decision</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Fiscal_Year__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2016</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Type_of_Funding_Allocated__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Fully Funded,Partially Funded</value>
+        </criteriaItems>
+    </filter>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Executive_Business_Case__c.Type_of_Funding_Allocated__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>EBCs by Funding Decision FY 2016</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Executive_Business_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

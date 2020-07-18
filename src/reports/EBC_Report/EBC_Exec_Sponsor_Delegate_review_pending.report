@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Fiscal_Year__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Executive_Sponsor_Delegate__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Stage__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Status__c</field>
+    </columns>
+    <columns>
+        <field>CUST_CREATED_DATE</field>
+    </columns>
+    <description>EBC&apos;s that are currently awaiting approval from an Executive Sponsor or Delegate.</description>
+    <filter>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Stage__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Executive Sponsor Review</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Status__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>Pending</value>
+        </criteriaItems>
+        <criteriaItems>
+            <column>Executive_Business_Case__c.Fiscal_Year__c</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value>2016</value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>EBC Exec Sponsor/Delegate review pending</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Executive_Business_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>Executive_Business_Case__c.CFO_Review_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

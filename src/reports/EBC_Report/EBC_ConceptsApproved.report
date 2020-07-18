@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <aggregates>
+        <calculatedFormula>(Executive_Business_Case__c.ConceptApproved__c:SUM/RowCount)*100</calculatedFormula>
+        <datatype>number</datatype>
+        <developerName>FORMULA1</developerName>
+        <isActive>true</isActive>
+        <isCrossBlock>false</isCrossBlock>
+        <masterLabel>% Approved Concepts</masterLabel>
+        <scale>2</scale>
+    </aggregates>
+    <columns>
+        <field>CUST_NAME</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Fiscal_Year__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.ConceptApproved__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Phase__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Stage__c</field>
+    </columns>
+    <columns>
+        <field>Executive_Business_Case__c.Status__c</field>
+    </columns>
+    <description>EBC - This report tracks the percentage of concepts approved by total number of EBCs</description>
+    <format>Summary</format>
+    <groupingsDown>
+        <dateGranularity>Day</dateGranularity>
+        <field>Executive_Business_Case__c.Service_or_Staff_Office_SSO__c</field>
+        <sortOrder>Asc</sortOrder>
+    </groupingsDown>
+    <name>Concepts Approved %</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>CustomEntity$Executive_Business_Case__c</reportType>
+    <scope>organization</scope>
+    <showDetails>false</showDetails>
+    <showGrandTotal>false</showGrandTotal>
+    <showSubTotals>false</showSubTotals>
+    <sortColumn>Executive_Business_Case__c.ConceptApproved__c</sortColumn>
+    <sortOrder>Asc</sortOrder>
+    <timeFrameFilter>
+        <dateColumn>CUST_CREATED_DATE</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>

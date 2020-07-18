@@ -1,0 +1,34 @@
+<table style="color: #000000; font-size: 12.8000001907349px; border: thick ridge #cccccc;" border="0" width="600" cellspacing="0" cellpadding="0" align="center">
+<tbody>
+<tr>
+<td><img class="CToWUd" src="https://ci6.googleusercontent.com/proxy/6ZboSW7id8Y1q39ZyMTIijPukJuNCfZYKw0TxQnCu9D-9TfMDiY6zACKiFHi1aQmn4h1k0mC07lqjFr6kYvbTzIsZRNo7wmgFMvhuZV6HVpfFHoCQOgenN-SCB3FuH0sdPJ14vbtUb2fLsWkBcMynuTf8Mzkg69IDvE5Aasc9nUmYiIzTWyKMvpfrwdm7kZWOzigQJSmDIZ1hz7i2KoDcxR9ovv13T_JX-3Ab7ofGavSDg=s0-d-e1-ft#http://images.gsasolutions.gsa.gov/EloquaImages/clients/USGeneralServicesAdministration/{0abb82cb-da4c-428f-a8c6-eec3dc31cb2f}_gsa_headerLogo_600px.jpg" 
+	border="0" alt="GSA Logo" width="100%" height="89" /></td>
+</tr>
+<tr>
+<td style="padding: 10px;" colspan="2" align="center" bgcolor="#003e74">&nbsp;</td>
+</tr>
+<tr>
+<td style="padding: 8px;" valign="top" bgcolor="#FFFFFF" width="600">
+	<span style="font-family: Arial,Helvetica,sans-serif; font-size: 9pt;">
+		<span style="font-family: Arial,Helvetica,sans-serif; font-size: 9pt;">
+			A new Executive Business Case has been approved by the Planning and Governance team and is ready for review.  <br /><br />
+
+			<b>Project Name:</b> {!Executive_Business_Case__c.Name} <br /> 
+			<b>Total Requested Amount:</b> {!Executive_Business_Case__c.Requested_Total_Amount_5_Years__c} <br /> 
+			<b>Fiscal Year:</b> {!Executive_Business_Case__c.Fiscal_Year__c} <br />
+			<b>Status:</b> {!Executive_Business_Case__c.Stage__c} - {!Executive_Business_Case__c.Status__c}<br />
+			<b>Comments:</b> {!ApprovalRequest.Comments}<br /><br />
+
+			Please review the business case and click on the link to it view in Salesforce.  When reviewing the business case in Salesforce, 
+			first please make sure to update the CFO Funding Approval section on the business case.  Second, Approve or Reject the case via the Approval Related list 
+			at the bottom of the business case.<br /><br />
+						
+			<b>Link to Case:</b> {!Executive_Business_Case__c.Link}<br /> <br /> 
+			
+			Thank you.  If you have any questions, please email: EBCMailbox@gsa.gov.
+		</span>
+	</span>
+</td>
+</tr>
+</tbody>
+</table>

@@ -1,0 +1,95 @@
+<!--Description - VF component for approval process for Concept Stages for custom validations -->
+<!--Created by Ramesh Dugar--->
+
+<apex:page standardController="Executive_Business_Case__c" sidebar="false" standardStylesheets="true" >
+<apex:includeScript value="{!$Resource.EBC_jQuery}"/>
+
+<apex:relatedList list="ProcessSteps" pageSize="500" />
+    
+<script>
+	var $j = jQuery.noConflict();
+    	function navigateToUrl(url) {
+            url = url.replace("%2Fapex%2FEBCApprovalProcess%3Finline%3D1%26core.apexpages.devmode.url%3D1%26id%3D", " ");
+            window.parent.location.href = url;
+            window.close();
+  		}
+	$j(document).ready(function(){
+        var recordId = "";
+        var stageValue="";
+        var NonIT="";
+        var ConcepthighestReviewValue="";
+        var Status="";
+        var ConceptCFOReviewDate ="";
+        var ConceptGSAITReviewCompletedDate="";
+        var ConceptPABReviewDate="";
+        var ConceptIRBReviewDate="";
+        
+        stageValue = '{!JSENCODE(Executive_Business_Case__c.Stage__c)}';
+        NonIT = '{!JSENCODE(Executive_Business_Case__c.Non_IT_IT__c)}';
+        ConcepthighestReviewValue = '{!JSENCODE(Executive_Business_Case__c.ConceptHighestReview__c)}'; 
+        Status = '{!JSENCODE(Executive_Business_Case__c.Status__c)}';
+        ConceptCFOReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.ConceptCFOReviewDate__c))}'; 
+        ConceptGSAITReviewCompletedDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.ConceptGSAITReviewCompletedDate__c))}'; 
+        ConceptPABReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.ConceptPABReviewDate__c))}'; 
+        ConceptIRBReviewDate = '{!JSENCODE(TEXT(Executive_Business_Case__c.ConceptIRBReviewDate__c))}'; 
+              
+                
+        $j(".btn").attr('target', '_parent');
+        $j( "a" ).each(function( index ) {
+          $j( this ).attr('target', '_parent');    
+        });
+           
+     	if(stageValue!="" && Status!=""){
+        	$j("input[Title='Submit for Approval']").hide();       
+     	}
+                
+          $j(".actionColumn").find("a").each(function(i){
+                    var title = $j(this).attr('title');
+                    var str2 = "Approve / Reject";
+                    if(title.indexOf(str2) != -1){
+                        
+                        // $j(this).attr("href","ApproveRejectRequest?id={!Executive_Business_Case__c.Id}");
+                        $j(this).attr('target','_top');
+                        $j(this).click(function(event) {
+                            //alert(event);
+                            if( stageValue != "" && stageValue == "Internal Review" ){
+                                if(NonIT == "" || ConcepthighestReviewValue == "" || ConceptCFOReviewDate=="" ){
+                                    
+                                     alert("To proceed with Internal Review, please ensure ALL of the following fields are complete:\n\n1. Request Classification \n2. Concept - Highest Review \n3. Concept - CFO Review Date \n\nNOTE: If 'IT' is selected, please enter \'Concept - GSA IT Review Completed Date\' to proceed  with the approval.");                          
+                                    //event.preventDefault();
+                                    
+                                    return false;
+                                }
+                                else if(NonIT=="IT" ){
+                                    if(ConceptGSAITReviewCompletedDate==""){
+                                        
+                                     alert("To proceed with Internal Review, please ensure EITHER of the following fields are complete: \n\n1. Concept - GSA IT Review Completed Date");
+                                    return false;
+                                        }
+                                }
+                               
+                                    }
+                                          
+                             else if(stageValue != "" && stageValue == "Governance Review"){
+                                    
+                                    if(ConceptPABReviewDate=="" && ConceptIRBReviewDate==""){
+                                       
+                                     alert("To proceed with Governance Review, please ensure EITHER of the following fields are entered: \n \n1. Concept - PAB Review Date \n2. Concept - IRB Review Date");
+                                    return false;
+                                }
+                                
+                             }
+                            
+                        });
+                        return false;
+                    }
+         
+              else {
+                        $j(this).attr('target','_top');
+                
+                    }
+                });    
+    });      
+</script>
+
+</apex:page>

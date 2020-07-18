@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PathAssistant xmlns="http://soap.sforce.com/2006/04/metadata">
+    <active>true</active>
+    <entityName>GPM_Project__c</entityName>
+    <fieldName>Status__c</fieldName>
+    <masterLabel>P360-Project-CorporateITServices</masterLabel>
+    <pathAssistantSteps>
+        <fieldNames>Actual_End_Date__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Ensure the Kanban board has been closed and is ready for a new Sprint&lt;/li&gt;&lt;li&gt;Ensure that any relevant documentation is complete&lt;/li&gt;&lt;li&gt;Ensure project Milestones are updated and closed out &lt;/li&gt;&lt;li&gt;Obtain customer acceptance and sign-off&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Close-Out/Closed</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Deploy the code/configuration to Production&lt;/li&gt;&lt;li&gt;Notify Security team for review (if necessary). &lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Deployment</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Complexity__c</fieldNames>
+        <fieldNames>Size__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Finalize and document the Project Design. &lt;/li&gt;&lt;li&gt;All requirements must be fully defined and ready for development&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Design</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Actual_Start_Date__c</fieldNames>
+        <fieldNames>StatusUpdateOrComments__c</fieldNames>
+        <fieldNames>Accomplishments__c</fieldNames>
+        <fieldNames>Issues__c</fieldNames>
+        <fieldNames>Performance_Status__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Complete the development of the requirements&lt;/li&gt;&lt;li&gt;Complete all necessary documentation&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Development</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Office_Portfolio__c</fieldNames>
+        <fieldNames>Service_Staff_Office__c</fieldNames>
+        <fieldNames>Region__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Define the Objectives, Scope, and Requirements. Planning and requirements documents to be produced.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Initiating</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>Planned_Start_Date__c</fieldNames>
+        <fieldNames>Planned_End_Date__c</fieldNames>
+        <fieldNames>Project_Manager__c</fieldNames>
+        <fieldNames>Budgeted_Amount__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Define Project Timeline, Milestones, and Team Members&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Planning</picklistValueName>
+    </pathAssistantSteps>
+    <pathAssistantSteps>
+        <fieldNames>StatusUpdateOrComments__c</fieldNames>
+        <fieldNames>Accomplishments__c</fieldNames>
+        <fieldNames>UpcomingActionItems__c</fieldNames>
+        <fieldNames>Issues__c</fieldNames>
+        <info>&lt;strong&gt;Goals:&lt;/strong&gt;
+
+&lt;ul&gt;&lt;li&gt;Deploy the code/configuration to the Pre-Production environment&lt;/li&gt;&lt;li&gt;Facilitate User Acceptance Testing as needed.&lt;/li&gt;&lt;/ul&gt;</info>
+        <picklistValueName>Testing</picklistValueName>
+    </pathAssistantSteps>
+    <recordTypeName>P360_CorporateITServices</recordTypeName>
+</PathAssistant>

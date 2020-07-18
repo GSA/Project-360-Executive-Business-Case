@@ -1,0 +1,27 @@
+<apex:page StandardController="Executive_Business_Case__c" Extensions="EBC_PizzaTrackerController" standardStylesheets="false" showHeader="false" sidebar="false">
+    <apex:includeLightning />  
+    <apex:includeScript value="/lightning/lightning.out.js"/>
+    <div id="ltng"/>
+    <div id="note">
+        <apex:outputText rendered="{!Executive_Business_Case__c.File_Attached__c=='Not Attached'}" escape="false">
+            <b>Note: <span style="color:red">Please complete and upload Part-II of the EBC Request Template. Once uploaded, update the 'EBC Attachment Status' field to "Attached."</span>  </b>      
+        </apex:outputText>
+        
+        <apex:outputText rendered="{!IF(Executive_Business_Case__c.File_Attached__c=='Attached' && Executive_Business_Case__c.Stage__c=='EBC' && ( Executive_Business_Case__c.Status__c=='Pending'),True,False )}" escape="false">          
+            <b>Note: <span style="color:#92D051">Document has been successfully attached. Case can now be submitted for approval. </span> </b>       
+        </apex:outputText> 
+    </div>
+    <script> 
+        var Id= "{!$CurrentPage.parameters.id}";
+        console.log('The Id of from the URL'+Id);
+        $Lightning.use("c:EBC_PizzaTrackerApp", function() {
+            console.log('inside ltng');
+            $Lightning.createComponent(
+                "c:EBC_PizzaTracker_EBCStages",
+                {"recordId":Id},"ltng",
+                function(cmp) {                    
+                });
+        });
+    </script>
+    
+</apex:page>

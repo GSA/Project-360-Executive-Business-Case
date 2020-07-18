@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EBC Email to Requester when P&amp;G Denies request.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>EBC - Planning and Governance Case Denial</name>
+    <style>none</style>
+    <subject>Status of your Executive Business Case for {!Executive_Business_Case__c.Name}</subject>
+    <textOnly>Dear {!Executive_Business_Case__c.CreatedBy},
+
+Your request for an Executive Business Case has been Denied by the Planning and Governance group.  Please view the business case for information pertaining to the decision.
+
+Project Name: {!Executive_Business_Case__c.Name}
+Total Requested Amount: {!Executive_Business_Case__c.Requested_Total_Amount_5_Years__c}
+Fiscal Year: {!Executive_Business_Case__c.Fiscal_Year__c}
+Status: {!Executive_Business_Case__c.Stage__c} - {!Executive_Business_Case__c.Status__c}
+Comments: {!ApprovalRequest.Comments}
+
+Link to Case: {!Executive_Business_Case__c.Link}
+
+Thank you.  If you have any questions, please email: EBCMailbox@gsa.gov.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

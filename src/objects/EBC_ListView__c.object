@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customSettingsType>Hierarchy</customSettingsType>
+    <description>This is used for displaying the default list view.</description>
+    <enableFeeds>false</enableFeeds>
+    <fields>
+        <fullName>InvestmentReviewBoard__c</fullName>
+        <externalId>false</externalId>
+        <label>InvestmentReviewBoard</label>
+        <length>25</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>EBC ListView</label>
+    <visibility>Protected</visibility>
+</CustomObject>

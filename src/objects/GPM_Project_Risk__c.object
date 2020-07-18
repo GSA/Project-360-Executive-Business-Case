@@ -1,0 +1,507 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Large</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <formFactor>Small</formFactor>
+        <type>Default</type>
+    </actionOverrides>
+    <allowInChatterGroups>false</allowInChatterGroups>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <description>This object is used to support the Project object; it allows users to associate risks in the Risk Catalog to Projects.</description>
+    <enableActivities>true</enableActivities>
+    <enableBulkApi>true</enableBulkApi>
+    <enableEnhancedLookup>false</enableEnhancedLookup>
+    <enableFeeds>true</enableFeeds>
+    <enableHistory>true</enableHistory>
+    <enableLicensing>false</enableLicensing>
+    <enableReports>true</enableReports>
+    <enableSearch>true</enableSearch>
+    <enableSharing>true</enableSharing>
+    <enableStreamingApi>true</enableStreamingApi>
+    <externalSharingModel>ControlledByParent</externalSharingModel>
+    <fields>
+        <fullName>Date_Identified__c</fullName>
+        <externalId>false</externalId>
+        <label>Date Identified</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_Resolved__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Enter the Date the Risk/Issue was Resolved.</inlineHelpText>
+        <label>Date Resolved</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_to_Resolve_Risk__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF 
+(NOT(ISNULL( Date_Resolved__c)),
+Date_Resolved__c - Date_Identified__c, NULL)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label># Days to Resolve Risk</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Description__c</fullName>
+        <externalId>false</externalId>
+        <label>Description</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Exposure_Flag__c</fullName>
+        <externalId>false</externalId>
+        <formula>IMAGE( 
+CASE(Exposure__c , 
+&quot;Red (High)&quot;, &quot;/resource/RedFlag&quot;, 
+&quot;Yellow (Medium)&quot;, &quot;/resource/YellowFlag&quot;, 
+&quot;Green (Low)&quot;, &quot;/resource/GreenFlag&quot;,&quot;/s.gif&quot;), 
+CASE(Exposure__c, 
+&quot;Red (High)&quot;, &quot;Red (High)&quot;, 
+&quot;Yellow (Medium)&quot;, &quot;Yellow (Medium)&quot;, 
+&quot;Green (Low)&quot;, &quot;Green (Low)&quot;,&quot;Exposure&quot;) 
+)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Exposure Flag</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Exposure__c</fullName>
+        <externalId>false</externalId>
+        <label>Exposure</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Red (High)</fullName>
+                    <default>false</default>
+                    <label>Red (High)</label>
+                </value>
+                <value>
+                    <fullName>Yellow (Medium)</fullName>
+                    <default>false</default>
+                    <label>Yellow (Medium)</label>
+                </value>
+                <value>
+                    <fullName>Green (Low)</fullName>
+                    <default>false</default>
+                    <label>Green (Low)</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>GPM_Project__c</fullName>
+        <externalId>false</externalId>
+        <label>Project</label>
+        <referenceTo>GPM_Project__c</referenceTo>
+        <relationshipName>GPM_Project_Risks</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackFeedHistory>true</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Impact__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>1- Negligible: Can Mitigate
+2- Minor: Probably Mitigate
+3- Moderate: May Mitigate
+4- Serious:Cannot Mitigate with current approach
+5- Critical: Cannot Mitigate No workaround</inlineHelpText>
+        <label>Impact</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>1- Negligible</fullName>
+                    <default>false</default>
+                    <label>1- Negligible</label>
+                </value>
+                <value>
+                    <fullName>2- Minor</fullName>
+                    <default>false</default>
+                    <label>2- Minor</label>
+                </value>
+                <value>
+                    <fullName>3- Moderate</fullName>
+                    <default>false</default>
+                    <label>3- Moderate</label>
+                </value>
+                <value>
+                    <fullName>4- Serious</fullName>
+                    <default>false</default>
+                    <label>4- Serious</label>
+                </value>
+                <value>
+                    <fullName>5- Critical</fullName>
+                    <default>false</default>
+                    <label>5- Critical</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Mitigation_Approach__c</fullName>
+        <externalId>false</externalId>
+        <label>Mitigation Approach</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Owner__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Owner</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipName>Project_Risks</relationshipName>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Probability__c</fullName>
+        <externalId>false</externalId>
+        <label>Probability</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Very Unlikely</fullName>
+                    <default>false</default>
+                    <label>Very Unlikely</label>
+                </value>
+                <value>
+                    <fullName>Unlikely</fullName>
+                    <default>false</default>
+                    <label>Unlikely</label>
+                </value>
+                <value>
+                    <fullName>Even Likelihood</fullName>
+                    <default>false</default>
+                    <label>Even Likelihood</label>
+                </value>
+                <value>
+                    <fullName>Likely</fullName>
+                    <default>false</default>
+                    <label>Likely</label>
+                </value>
+                <value>
+                    <fullName>Very Likely</fullName>
+                    <default>false</default>
+                    <label>Very Likely</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Risk_Title__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Id, Title__c,&quot;_top&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Risk Title</label>
+        <required>false</required>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Risk_or_Issue__c</fullName>
+        <description>Select if the record is a Risk or an Issue</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Risk is uncertain event/condition that, if it occurs, has an effect on a project&apos;s objectives; 
+Issue is a risk that has occurred and cannot be managed by Project Manager</inlineHelpText>
+        <label>Risk or Issue?</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Risk</fullName>
+                    <default>true</default>
+                    <label>Risk</label>
+                </value>
+                <value>
+                    <fullName>Issue</fullName>
+                    <default>false</default>
+                    <label>Issue</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>Mitigation Pending - Open</fullName>
+                    <default>false</default>
+                    <label>Mitigation Pending - Open</label>
+                </value>
+                <value>
+                    <fullName>Mitigation Planned - In Progress</fullName>
+                    <default>false</default>
+                    <label>Mitigation Planned - In Progress</label>
+                </value>
+                <value>
+                    <fullName>Mitigation In Place - Closed</fullName>
+                    <default>false</default>
+                    <label>Mitigation In Place - Closed</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Title__c</fullName>
+        <externalId>false</externalId>
+        <label>Title</label>
+        <length>200</length>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>true</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Risk / Issue</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>PRI-{000000000}</displayFormat>
+        <label>Risk Name</label>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Risks / Issues</pluralLabel>
+    <searchLayouts>
+        <customTabListAdditionalFields>Risk_Title__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>GPM_Project__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Owner__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Date_Identified__c</customTabListAdditionalFields>
+        <customTabListAdditionalFields>Status__c</customTabListAdditionalFields>
+        <lookupDialogsAdditionalFields>Risk_Title__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>GPM_Project__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Owner__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Date_Identified__c</lookupDialogsAdditionalFields>
+        <lookupDialogsAdditionalFields>Status__c</lookupDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Risk_Title__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>GPM_Project__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Owner__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Date_Identified__c</lookupPhoneDialogsAdditionalFields>
+        <lookupPhoneDialogsAdditionalFields>Status__c</lookupPhoneDialogsAdditionalFields>
+        <searchResultsAdditionalFields>Title__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>GPM_Project__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Owner__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Date_Identified__c</searchResultsAdditionalFields>
+        <searchResultsAdditionalFields>Status__c</searchResultsAdditionalFields>
+    </searchLayouts>
+    <sharingModel>ControlledByParent</sharingModel>
+    <validationRules>
+        <fullName>Date_Resolved_later_than_Date_Identified</fullName>
+        <active>true</active>
+        <description>Date Resolved must be a greater date than Date Identified</description>
+        <errorConditionFormula>Date_Resolved__c &lt;  Date_Identified__c</errorConditionFormula>
+        <errorMessage>Date Resolved must later or equal to Date Identified.</errorMessage>
+    </validationRules>
+    <visibility>Public</visibility>
+</CustomObject>

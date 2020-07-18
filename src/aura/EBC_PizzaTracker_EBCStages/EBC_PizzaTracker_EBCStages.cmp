@@ -1,0 +1,130 @@
+<aura:component controller="EBC_PizzaTrackerController" implements="flexipage:availableForAllPageTypes,force:appHostable,force:hasRecordId" access="global">
+  <ltng:require styles="/resource/SLDS/assets/styles/salesforce-lightning-design-system.css,/resource/SLDS/assets/styles/salesforce-lightning-design-system.min.css"/>
+  <aura:attribute name="recordId" type="Id"/>
+  <aura:attribute name="ExValue" type="string"/>
+  <aura:attribute name="PerValue" type="double"/>
+  <aura:attribute name="lival1" type="string"/>
+  <aura:attribute name="lival2" type="string"/>
+  <aura:attribute name="lival3" type="string"/>
+  <aura:attribute name="lival4" type="string"/>
+  <aura:attribute name="lival5" type="string"/>
+  <aura:attribute name="lival6" type="string"/>
+  <aura:attribute name="lisubval1" type="string"/>
+  <aura:attribute name="lisubval2" type="string"/>
+  <aura:attribute name="lisubval3" type="string"/>
+  <aura:attribute name="lisubval4" type="string"/>
+  <aura:attribute name="lisubval5" type="string"/>
+  <aura:attribute name="lisubval6" type="string"/>
+  <aura:attribute name="lival6subtext1" type="string"/>
+  <aura:attribute name="lival6subtext2" type="string"/>
+  <aura:attribute name="lisubvalClassone" type="string"/>
+  <aura:attribute name="lisubvalClasstwo" type="string"/>
+  <aura:attribute name="lisubvalClassthree" type="string"/>
+  <aura:attribute name="lisubvalClassfour" type="string"/>
+  <aura:attribute name="lisubvalClassfive" type="string"/>
+  <aura:attribute name="lisubvalClasssix" type="string"/>
+  <aura:attribute name="phaseclassone" type="string"/>
+  <aura:attribute name="phaseclasstwo" type="string"/>
+  <aura:attribute name="phaseclassthree" type="string"/>
+  <aura:attribute name="phaseclassfour" type="string"/>
+  <aura:attribute name="phaseclassfive" type="string"/>
+  <aura:attribute name="phaseclasssix" type="string"/>
+  <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+  <aura:handler event="force:refreshView" action="{!c.doInit}" />
+  <br></br><br></br>
+  
+<!--Tracker component starts here-->
+  <div class="slds-wizard" role="navigation">
+    <ol class="slds-wizard__list">
+      <!--concept node-->
+      <li class="slds-wizard__item slds-is-active" id="li1">
+        <a href="javascript:void(0);" class="slds-wizard__link">
+          <span class="slds-wizard__marker" id="Concept">
+            <div id="lisubval1" class="stageone">
+              <b><aura:unescapedHTML value="{!v.lisubval1}"/></b>
+            </div>
+          </span>
+          <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="Concept" style="line-height: 4.25;margin-top: -62px;">
+            Concept <br/>
+            <b class="approvedphase"> APPROVED</b>
+          </span>
+        </a>
+      </li>
+      <!--EBC Request node-->
+      <li class="slds-wizard__item" id="li2">
+        <a href="javascript:void(0);" class="slds-wizard__link">
+          <span class="slds-wizard__marker" id="EBCRequest">
+            <div id="lisubval1" class="{!v.lisubvalClasstwo}">
+              <b><aura:unescapedHTML value="{!v.lisubval2}"/></b>
+            </div>
+          </span>
+          <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="EBC Request" style="line-height: 4.25;margin-top: -62px;">  EBC Request <br/>
+             <b class="{!v.phaseclasstwo}">{!v.lival2}</b>
+          </span>
+        </a>
+      </li>
+      <!--Executive Sponsor node-->
+      <li class="slds-wizard__item" id="li3">
+        <a href="javascript:void(0);" class="slds-wizard__link">
+          <span class="slds-wizard__marker" id="Executive">
+            <div id="lisubval1" class="{!v.lisubvalClassthree}">
+              <b><aura:unescapedHTML value="{!v.lisubval3}"/></b>
+            </div>
+          </span>
+          <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="Executive Sponsor" style="line-height:4.25;margin-top: -62px;">
+            Executive Sponsor Review <br/>&nbsp;
+            <b class="{!v.phaseclassthree}">{!v.lival3}</b>
+          </span>
+        </a>
+      </li>
+      <!--GSA IT/CFO node-->
+      <li class="slds-wizard__item" id="li4">
+        <a href="javascript:void(0);" class="slds-wizard__link">
+          <span class="slds-wizard__marker" id="GSAIT">
+            <div id="lisubval4" class="{!v.lisubvalClassfour}">
+              <b><aura:unescapedHTML value="{!v.lisubval4}"/></b>
+            </div>
+          </span>
+          <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="GSAIT CFO Review" style="line-height: 4.25;margin-top: -62px;">
+            GSA IT/CFO Review <br/>&nbsp;
+            <b class="{!v.phaseclassfour}">{!v.lival4}</b>
+          </span>
+        </a>
+      </li>
+      <!--Governance REview node-->
+      <li class="slds-wizard__item" id="li5">
+        <a href="javascript:void(0);" class="slds-wizard__link">
+          <span class="slds-wizard__marker" id="GovernanceReview">
+            <div id="lisubval5" class="{!v.lisubvalClassfive}">
+              <b><aura:unescapedHTML value="{!v.lisubval5}"/></b>
+            </div>  
+          </span>
+          <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="Governance Review" style="line-height:4.25 ;margin-top: -62px;">
+            Governance Review<br/>&nbsp;
+            <b class="{!v.phaseclassfive}">{!v.lival5}</b>
+          </span>
+        </a>
+      </li>
+      <!--Funding node-->
+      <li class="slds-wizard__item" id="li6">
+          <a href="javascript:void(0);" class="slds-wizard__link">
+            <span class="slds-wizard__marker" id="Funding">
+              <div id="lisubval6" class="{!v.lisubvalClasssix}">
+                <b><aura:unescapedHTML value="{!v.lisubval6}"/></b>
+              </div>
+            </span>
+            <span class="slds-wizard__label slds-text-title--caps slds-truncate" title="Funding Approval" style="word-wrap:break-word;line-height: 4.25;margin-top: -62px;margin-bottom:-18px;">
+                Funding<br/>&nbsp;
+                <b class="{!v.phaseclasssix}">{!v.lival6}</b>           
+            </span>
+            <b class="{!v.phaseclasssix}" style="font-size:small;margin-right:-6px">{!v.lival6subtext1}</b> &nbsp;
+            <b class="{!v.phaseclasssix}" style="font-size:small">{!v.lival6subtext2}
+            </b>
+          </a>
+        </li>
+    </ol>
+    <span class="slds-wizard__progress" id="progressbar">
+      <span class="slds-wizard__progress-bar progress" style="{!'width:'+v.PerValue+'%'}"></span>
+    </span>
+  </div> 
+</aura:component>

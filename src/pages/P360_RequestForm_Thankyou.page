@@ -1,0 +1,185 @@
+<apex:page Controller="P360_RequestForm_Controller" showHeader="False" sidebar="False" standardStylesheets="False" id="RequestForm" doctype="html-5.0">
+	<head>
+        <apex:stylesheet value="{!URLFOR($Resource.wds, '/uswds-0.9.0/css/uswds.min.css')}"/>
+        
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+
+        <!-- Mobile Specific Metas
+        ================================================== -->
+        <meta name="HandheldFriendly" content="True"/>
+        <meta name="MobileOptimized" content="320"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+        <!-- Title and meta description
+        ================================================== -->
+
+        <title>CXO Request Form</title>
+        <meta property="og:title" content="CXO Request Form" />
+        <meta name="description" content=""/>
+        <meta property="og:description" content="" />
+         <style>
+            .header{
+                
+                border-bottom: 4px solid #3c547c;
+            }
+
+            .title{
+                
+                float: left;
+                font-size: 30px;
+                margin-top: 1.25rem;
+            }
+
+            .header-side{
+                float:right;
+            }
+
+            .nav{
+                margin-bottom: 0;
+                list-style-type: none;
+                padding-left: 0;
+                display: flex;
+                flex-direction: column;
+                flex-wrap: wrap;
+                list-style: none;
+                margin-top: 3.5rem;
+            }
+
+            label{
+                max-width: 66rem;
+            }
+
+            .usa-input-required:after {
+                color: red;
+                content: '*'; 
+            }
+
+            .cf:before,.cf:after {
+                content: "";
+                display: table;
+            }
+
+            /* For modern browsers */
+            .cf:after {
+                clear: both;
+            }
+
+            .cf {
+                /* For IE 6/7 (trigger hasLayout) */
+                zoom: 1;
+            }
+
+            .header {
+                border-bottom: 4px solid #3c547c;
+                overflow: auto;
+            }
+
+            .header .logo {
+                display: block;
+                margin: 1em 0;
+            }
+
+            .header h1 {
+                font-family: "Avenir Next W01", Arial, sans-serif;
+                font-size: 3rem;
+                font-weight: 500;
+                display: inline-block;
+                margin-top: 2em;
+            }
+
+            .header h1 span {
+                font-family: "Avenir Next W01", Arial, sans-serif;
+                font-weight: bold;
+            }
+            
+            .wrap {
+                width: 90%;
+                margin: 0 auto;
+            }
+            
+            @media only screen and (min-width: 20em) {
+                .header .logo {
+                    margin: 1em 0 0 0;
+                }
+                .header h1 {
+                    margin-bottom: .5em;
+                }
+            } 
+
+            @media only screen and (min-width: 30em) {
+                .header .logo {
+                    margin: 1em 0;
+                    float: right;
+                }
+            }
+            
+            @media only screen and (min-width: 75em) { 
+                .wrap {
+                    max-width: 1200px;
+                }
+            }
+            
+            .img {
+                border: 0;
+                /* Improve IE's resizing of images */
+                -ms-interpolation-mode: bicubic;
+            }
+            
+            .img{
+                /* Fluid images */
+                max-width: 100%;
+                width: 100%;
+            }
+
+            #footercontent2 a {
+                color:#ffffff;
+            }
+
+            section.usa-grid{
+                padding: 0rem 2rem 0rem 2rem;
+            }
+
+            footer{
+                padding-top: 27%;
+            }
+
+        </style>   
+    </head>
+    <body>
+        
+        <header class="header cf" role="banner">
+            <div class="wrap">
+                <a href="http://open.gsa.gov" target="_blank">
+                <apex:image url="{!URLFOR($Resource.GSAITHire_Starlogo)}" styleclass="logo" alt="GSA IT" id="gsaheaderlogo" style="width: 272px; height: 84px;margin-top: 18px;"/> 
+                </a>
+                <h1>IT PROJECT REQUEST PORTAL</h1>
+            </div>
+        </header>
+    </body>
+    <div class="site-content">
+        <section class="slab-intro usa-grid" style="padding-top: 20px;font-size: 18px;text-align: justify;">
+        	Your request was submitted successfully.  You will receive an email shortly from 
+            <a href="mailto:corporateITservicesrequestsupport@gsa.gov">CorporateITServicesRequestSupport@gsa.gov</a>  with information related to your submission.  To view the status of your request, navigate &nbsp;
+            <apex:outputLink value="/{!$CurrentPage.parameters.RequestId}">here.</apex:outputLink>
+            If you have any questions, please contact <a href="mailto:corporateITservicesrequestsupport@gsa.gov">Corporate Services Request Support</a>.
+            <br/><br/>
+             <span style="font-weight: 600;font-style: italic">We welcome your feedback.  Click <a href="{!$Label.P360_Survey_Link}" target="_blank">here</a> to complete a brief survey. </span>    
+                <br/><br/>
+
+            Thank you!
+         </section>
+    </div>	
+    <footer class="usa-footer usa-footer-big" role="contentinfo">
+            
+            <div class="usa-footer-primary-section"  style="padding-top: 0rem;padding-bottom: 0rem;background-color: #3C547C;">
+              <div class="usa-grid" id="footercontent2">
+                    <div class="usa-footer-logo usa-width-one-whole">
+                        <p style="text-align:center;color:#ffffff;">
+                            <a href="https://corporateapps.gsa.gov/support/about-us/" target="_blank">About Us</a> | <a href=" https://insite.gsa.gov/portal/content/530234" target="_blank">EBC Guidance And Templates</a> | <a href="{!MyRequestsURL}" target="_blank">Project360</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+</apex:page>

@@ -1,0 +1,62 @@
+.THIS #progressbar{
+    position: absolute;
+    left: 0;
+    top: .625rem;
+    height: .25rem;
+    display: block;
+    width: 100%;
+    z-index: 0;
+    background: #e0e5ee;
+
+}
+
+.THIS .progress{
+    background-color:#92D051;
+}
+
+.THIS #Concept{
+    background-color:#92D051;
+}
+
+.THIS .stageone{
+    color:white;
+    margin-left:6px;
+    padding-top:2px;
+}
+
+.THIS .approved{
+    color:white;
+    padding-top:2px;
+}
+
+.THIS .pending{
+    color:white;
+    margin-left:6px;
+    position:absolute;
+}
+
+.THIS .denied{
+    color:white;
+    margin-left:6px;
+    padding-top:2px;
+    position:absolute;
+}
+
+.THIS .pendingphase{
+    color:#36B7DA;
+}
+.THIS .approvedphase{
+    color:#92D051;
+}
+.THIS .deniedphase{
+    color:#FC0202;
+}
+.THIS .fundingphase{
+    color:#F79646;
+}
+
+.THIS .stagefive{
+    color:white;
+    margin-right:6px;
+    padding-top:2px;
+}

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <description>EBC Case has been approved and is ready for review by P&amp;G.</description>
+    <encodingKey>UTF-8</encodingKey>
+    <name>EBC - Planning and Governance Case Is Ready</name>
+    <style>none</style>
+    <subject>A New Executive Business Case Has Been Approved For Your Review</subject>
+    <textOnly>A new Executive Business Case has been approved by an Executive Sponsor and is ready for review.
+
+Project Name: {!Executive_Business_Case__c.Name}
+Total Requested Amount: {!Executive_Business_Case__c.Requested_Total_Amount_5_Years__c}
+Fiscal Year: {!Executive_Business_Case__c.Fiscal_Year__c}
+Status: {!Executive_Business_Case__c.Stage__c} - {!Executive_Business_Case__c.Status__c}
+Comments: {!ApprovalRequest.Comments}
+
+Please review the business case and click on the link to view in Salesforce.
+
+Link to Case: {!Executive_Business_Case__c.Link}
+
+Thank you.  If you have any questions, please email: EBCMailbox@gsa.gov.</textOnly>
+    <type>custom</type>
+    <uiType>Aloha</uiType>
+</EmailTemplate>

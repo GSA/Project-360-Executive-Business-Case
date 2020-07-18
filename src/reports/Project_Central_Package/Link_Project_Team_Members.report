@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Report xmlns="http://soap.sforce.com/2006/04/metadata">
+    <columns>
+        <field>GPM_Project__c.Project_Team_Members__r$Team_Member_link__c</field>
+    </columns>
+    <columns>
+        <field>GPM_Project__c.Project_Team_Members__r$Responsibility__c</field>
+    </columns>
+    <description>This report shows all team members in a project.  It is used for the &quot;Project Team Members&quot; link on GSA Project.</description>
+    <filter>
+        <criteriaItems>
+            <column>GPM_Project__c$Id</column>
+            <columnToColumn>false</columnToColumn>
+            <isUnlocked>false</isUnlocked>
+            <operator>equals</operator>
+            <value></value>
+        </criteriaItems>
+    </filter>
+    <format>Tabular</format>
+    <name>Link - Project Team Members</name>
+    <params>
+        <name>co</name>
+        <value>1</value>
+    </params>
+    <reportType>Projects_w_or_w_o_Team_Members__c</reportType>
+    <scope>organization</scope>
+    <showDetails>true</showDetails>
+    <showGrandTotal>true</showGrandTotal>
+    <showSubTotals>true</showSubTotals>
+    <timeFrameFilter>
+        <dateColumn>GPM_Project__c$Actual_End_Date__c</dateColumn>
+        <interval>INTERVAL_CUSTOM</interval>
+    </timeFrameFilter>
+</Report>
