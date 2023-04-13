@@ -1,5 +1,7 @@
 # Project 360 & Executive Business Case
 
+_This project has been archived, no further updates are planned._
+
 ## About
 
 Project Central is used to assist project managers, project teams and leadership in maintaining project documentation, correspondence, and records, while also enabling tracking of multiple projects through reporting and dashboards.
